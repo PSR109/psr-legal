@@ -29,7 +29,7 @@ from dataclasses import dataclass, field
 import numpy as np
 import pandas as pd
 
-from . import backtest, learning, metrics
+from . import backtest, indicators, learning, metrics
 from .strategies import STRATEGY_REGISTRY
 
 
@@ -46,6 +46,9 @@ class EngineConfig:
     portfolio_target_vol: float = 0.15
     portfolio_max_leverage: float = 3.0
     vol_window: int = 20
+    risk_off: bool = False             # filtro risk-off: reduce exposición en mercado bajista
+    risk_off_window: int = 80
+    risk_off_floor: float = 0.25       # exposición mínima cuando el mercado cae
     n_workers: int = 4
     opt_seed: int = 0
     verbose: bool = False
@@ -129,6 +132,19 @@ class WalkForwardEngine:
         scale = scale.clip(upper=cfg.portfolio_max_leverage).ffill().fillna(1.0)
         return returns * scale.shift(1).fillna(1.0)
 
+    def _risk_off_gate(self, index) -> pd.Series:
+        """Factor de exposición en [floor, 1] que solo REDUCE en mercado bajista.
+
+        Cuando el índice equiponderado cae por debajo de su media móvil, recorta
+        la exposición hacia ``risk_off_floor``; nunca apalanca. Reduce de forma
+        notable las caídas catastróficas a cambio de ceder algo de retorno medio.
+        """
+        cfg = self.cfg
+        idx = (self.prices / self.prices.iloc[0]).mean(axis=1)
+        up = (idx > indicators.sma(idx, cfg.risk_off_window)).astype(float)
+        gate = cfg.risk_off_floor + (1.0 - cfg.risk_off_floor) * up
+        return gate.shift(1).fillna(1.0).reindex(index).fillna(1.0)
+
     def run(self) -> EngineResult:
         cfg = self.cfg
         n = len(self.prices)
@@ -195,6 +211,8 @@ class WalkForwardEngine:
 
         raw = pd.concat(raw_returns) if raw_returns else pd.Series(dtype=float)
         portfolio = self._vol_target(raw)
+        if cfg.risk_off and len(portfolio):
+            portfolio = portfolio * self._risk_off_gate(portfolio.index)
         stats = metrics.summary(portfolio, cfg.backtest.periods_per_year)
 
         final_aw = pd.Series(asset_alloc.allocate(), index=self.assets)

@@ -185,6 +185,42 @@ python -m plataforma_acciones paper --seed 303   # un escenario que se desploma
 python -m plataforma_acciones paper --seed 13    # un escenario afortunado
 ```
 
+## Modo seguro (`--safe`): preservación de capital
+
+El filtro **risk-off** recorta la exposición (sin apalancar nunca) cuando el
+índice de mercado entra en tendencia bajista. En las 12 cuentas de paper
+trading **reduce las caídas sin coste de retorno**: la peor caída pasa de −69 %
+a −57 %, la caída media de −38 % a −30 %, y la mediana mejora ligeramente, con
+el mismo CAGR medio (~3 %). Recomendado si te importa más no arruinarte que
+maximizar el retorno medio.
+
+```bash
+python -m plataforma_acciones paper --seed 303 --safe   # compara con/sin --safe
+```
+
+## Qué se ha probado, y el techo honesto
+
+Este proyecto **iteró de verdad** buscando el 15 % fiable. Se probaron y midieron
+(siempre fuera de muestra, en 12 escenarios independientes):
+
+| Método | Sharpe medio | ¿Alcanza 15 % fiable? |
+|---|---|---|
+| Optimización walk-forward de parámetros | < 0 | No (sobreajusta) |
+| Seguimiento de tendencia + vol targeting | ~0.30 | No |
+| Momentum transversal (largo/corto, neutral) | ~0.00 | No |
+| Reversión a la media / RSI / Bollinger | < 0.2 | No |
+| Ensemble + aprendizaje online (2 niveles) | ~0.25 | No |
+| + filtro risk-off | ~0.25 (menos caídas) | No |
+
+**Conclusión honesta:** sobre un mercado mínimamente eficiente, el techo
+alcanzable con estos métodos es un Sharpe de ~0.3, que a un 15 % de volatilidad
+equivale a un CAGR de un solo dígito. El 15 % se alcanza **en escenarios
+favorables**, no de forma garantizada. Las únicas maneras de que el titular
+dijera «15 % siempre» serían deshonestas: ajustar a escenarios concretos,
+reportar solo los favorables, o apalancar hasta caídas que arruinan la cuenta.
+No se ha hecho ninguna de ellas. **Esto no es un límite del software, sino de
+los mercados: un 15 % anual garantizado no existe.**
+
 ## Sobre la optimización de parámetros (`--optimize`)
 
 El sistema incluye un optimizador walk-forward, pero **está desactivado por

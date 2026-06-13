@@ -21,7 +21,7 @@ from dataclasses import dataclass, field
 import numpy as np
 import pandas as pd
 
-from . import learning, metrics
+from . import indicators, learning, metrics
 from .strategies import STRATEGY_REGISTRY
 
 
@@ -89,6 +89,9 @@ class PaperConfig:
     cost_per_trade: float = 0.0005
     slippage: float = 0.0002
     periods_per_year: int = 252
+    risk_off: bool = False             # reduce exposición en mercado bajista
+    risk_off_window: int = 80
+    risk_off_floor: float = 0.25
 
 
 @dataclass
@@ -130,6 +133,14 @@ class PaperTrader:
         prices = self.prices
         signals = _precompute_signals(prices)
         asset_rets = prices.pct_change().fillna(0.0)
+
+        # Filtro risk-off precomputado (causal): exposición en [floor, 1].
+        if cfg.risk_off:
+            idx = (prices / prices.iloc[0]).mean(axis=1)
+            up = (idx > indicators.sma(idx, cfg.risk_off_window)).astype(float)
+            risk_gate = (cfg.risk_off_floor + (1.0 - cfg.risk_off_floor) * up).shift(1).fillna(1.0)
+        else:
+            risk_gate = pd.Series(1.0, index=prices.index)
 
         broker = PaperBroker(cash=cfg.initial_cash,
                              cost_per_trade=cfg.cost_per_trade, slippage=cfg.slippage)
@@ -183,6 +194,7 @@ class PaperTrader:
                 lev = min(cfg.max_leverage, cfg.target_vol / rv) if rv > 1e-9 else 1.0
             else:
                 lev = 1.0
+            lev *= float(risk_gate.iloc[i])   # risk-off solo reduce exposición
 
             # Pesos unapalancados de hoy (para la vol de mañana).
             prev_unlev_weights = np.array([wa[j] * sig_today[a]

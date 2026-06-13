@@ -30,6 +30,7 @@ def cmd_backtest(args):
     cfg = engine.EngineConfig(
         optimize=args.optimize,
         portfolio_target_vol=args.vol,
+        risk_off=args.safe,
         verbose=args.verbose,
     )
     res = engine.WalkForwardEngine(prices, cfg).run()
@@ -49,7 +50,8 @@ def cmd_robustness(args):
     print(f"Evaluando {len(seeds)} escenarios de mercado independientes...\n")
     for s in seeds:
         prices = data.load_prices(period_days=args.days, seed=s)
-        cfg = engine.EngineConfig(optimize=args.optimize, portfolio_target_vol=args.vol)
+        cfg = engine.EngineConfig(optimize=args.optimize, portfolio_target_vol=args.vol,
+                                  risk_off=args.safe)
         st = engine.WalkForwardEngine(prices, cfg).run().stats
         cagrs.append(st["cagr"]); sharpes.append(st["sharpe"]); dds.append(st["max_drawdown"])
         print(f"  escenario {s:3d} | CAGR {st['cagr']:7.2%} | Sharpe {st['sharpe']:5.2f} "
@@ -72,6 +74,7 @@ def cmd_paper(args):
         initial_cash=args.cash,
         target_vol=args.vol,
         rebalance_days=args.rebalance,
+        risk_off=args.safe,
     )
     res = paper.PaperTrader(prices, cfg).run(verbose=args.verbose)
     eq = res.equity_curve
@@ -116,6 +119,8 @@ def build_parser() -> argparse.ArgumentParser:
     common.add_argument("--vol", type=float, default=0.15, help="vol anual objetivo de cartera")
     common.add_argument("--optimize", action="store_true",
                         help="afinar params por ventana (tiende a sobreajustar)")
+    common.add_argument("--safe", action="store_true",
+                        help="activa el filtro risk-off (menos caídas, algo menos de retorno)")
     common.add_argument("--real", type=str, default=None,
                         help="símbolos reales separados por coma (vía yfinance)")
     common.add_argument("--verbose", action="store_true")
