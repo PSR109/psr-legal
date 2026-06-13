@@ -14,7 +14,7 @@ import argparse
 
 import numpy as np
 
-from . import data, engine, learning, metrics
+from . import data, engine, learning, metrics, paper
 
 
 def _load(args):
@@ -66,6 +66,31 @@ def cmd_robustness(args):
           "NO de forma garantizada. La esperanza realista es muy inferior.")
 
 
+def cmd_paper(args):
+    prices = _load(args)
+    cfg = paper.PaperConfig(
+        initial_cash=args.cash,
+        target_vol=args.vol,
+        rebalance_days=args.rebalance,
+    )
+    res = paper.PaperTrader(prices, cfg).run(verbose=args.verbose)
+    eq = res.equity_curve
+    print("\n=== CUENTA DE PAPER TRADING (dinero ficticio) ===")
+    print(f"  Capital inicial   : {cfg.initial_cash:14,.2f}")
+    print(f"  Patrimonio final  : {eq.iloc[-1]:14,.2f}")
+    print(f"  Periodo           : {eq.index[0].date()} -> {eq.index[-1].date()}")
+    print(f"  Operaciones        : {len(res.trades):14,d}")
+    print(f"  Costes pagados    : {res.total_costs:14,.2f}")
+    print("\n  --- Rendimiento ---")
+    print(metrics.format_summary(res.stats))
+    print("\n  --- Últimas operaciones ---")
+    for t in res.trades[-6:]:
+        verbo = "COMPRA" if t.units > 0 else "VENTA "
+        print(f"  {t.date.date()} {verbo} {abs(t.units):10.2f} u. {t.asset:9s} "
+              f"@ {t.price:9.2f} (coste {t.cost:6.2f})")
+    print("\nDinero ficticio sobre datos simulados. NO es asesoramiento financiero.")
+
+
 def cmd_regime(args):
     prices = _load(args)
     idx = (prices / prices.iloc[0]).mean(axis=1)
@@ -100,6 +125,10 @@ def build_parser() -> argparse.ArgumentParser:
     sp = sub.add_parser("robustness", parents=[common], help="evaluación multi-escenario")
     sp.add_argument("--seeds", type=int, default=12)
     sp.set_defaults(func=cmd_robustness)
+    sp = sub.add_parser("paper", parents=[common], help="paper trading con dinero ficticio")
+    sp.add_argument("--cash", type=float, default=100_000.0, help="capital inicial ficticio")
+    sp.add_argument("--rebalance", type=int, default=5, help="días entre rebalanceos")
+    sp.set_defaults(func=cmd_paper)
     sp = sub.add_parser("regime", parents=[common], help="diagnóstico de régimen de mercado")
     sp.set_defaults(func=cmd_regime)
     return p

@@ -51,7 +51,13 @@ por riesgo**.
    - **Optimizador walk-forward** opcional de parámetros (ver nota sobre
      sobreajuste más abajo).
 
-5. **Validación walk-forward**: todas las cifras de rendimiento se calculan
+5. **Paper trading** (`paper.py`): simulación de operativa con **dinero
+   ficticio** y libro mayor explícito (caja, posiciones en unidades, órdenes con
+   comisiones). Avanza día a día como una cuenta en vivo y el aprendizaje online
+   sigue mejorando mientras opera. Es la forma honesta de probar el
+   funcionamiento antes de arriesgar dinero real.
+
+6. **Validación walk-forward**: todas las cifras de rendimiento se calculan
    **fuera de muestra** (out-of-sample). Es la única forma honesta de estimar
    el comportamiento sobre datos no vistos.
 
@@ -70,11 +76,15 @@ python -m plataforma_acciones backtest --seed 42 --verbose
 # La prueba honesta: evalúa muchos escenarios independientes
 python -m plataforma_acciones robustness --seeds 12
 
+# Paper trading: opera con 100.000 € ficticios día a día
+python -m plataforma_acciones paper --seed 42 --cash 100000 --verbose
+
 # Diagnóstico del régimen de mercado actual
 python -m plataforma_acciones regime --seed 42
 
-# Demo de extremo a extremo con gráfico de la curva de capital
-python examples/run_demo.py
+# Demos de extremo a extremo con gráficos
+python examples/run_demo.py     # curva de capital del backtest
+python examples/paper_demo.py   # cuenta de paper trading + registro de operaciones
 ```
 
 Desde Python:
@@ -128,6 +138,53 @@ Reproduce esta tabla tú mismo:
 python -m plataforma_acciones robustness --seeds 12
 ```
 
+## Paper trading (dinero ficticio)
+
+El comando `paper` simula una cuenta real con capital ficticio: arranca con
+100.000 €, opera día a día con un libro mayor explícito (caja + posiciones),
+paga comisiones y *slippage*, y el sistema sigue aprendiendo online mientras
+opera. Es la prueba de funcionamiento previa a cualquier dinero real.
+
+### Escenario favorable (seed = 42)
+
+| Concepto | Valor |
+|---|---|
+| Capital inicial | 100.000 € |
+| Patrimonio final | **201.528 €** |
+| CAGR | 15.05 % |
+| Sharpe | 0.88 |
+| Máxima caída | −19.17 % |
+| Operaciones | 2.519 |
+| Costes pagados | 4.540 € |
+
+![Paper trading](examples/paper_equity.png)
+
+### La prueba honesta (12 cuentas ficticias independientes)
+
+La misma cuenta ficticia, **mismo sistema**, sobre 12 mercados independientes:
+
+| Métrica entre escenarios | Valor |
+|---|---|
+| Patrimonio final medio / mediana | 133.234 € / 114.010 € |
+| CAGR medio / mediana | **3.06 %** / 2.56 % |
+| Sharpe medio | 0.21 |
+| Volatilidad media | 17.9 % |
+| Máxima caída media | −38 % |
+| Cuentas que alcanzan ≥ 15 % | **3 / 12** |
+| Cuentas que **pierden capital** | **5 / 12** |
+
+**Conclusión:** con dinero ficticio, la cuenta mediana apenas crece y **5 de cada
+12 cuentas pierden dinero**, alguna desplomándose más de un 60 %. El paper
+trading sirve precisamente para esto: descubrir, **sin arriesgar dinero real**,
+que el sistema no tiene un filo fiable y que el 15 % no está garantizado.
+
+Reprodúcelo:
+
+```bash
+python -m plataforma_acciones paper --seed 303   # un escenario que se desploma
+python -m plataforma_acciones paper --seed 13    # un escenario afortunado
+```
+
 ## Sobre la optimización de parámetros (`--optimize`)
 
 El sistema incluye un optimizador walk-forward, pero **está desactivado por
@@ -148,15 +205,16 @@ plataforma_acciones/
 ├── metrics.py      # CAGR, Sharpe, Sortino, drawdown, Calmar...
 ├── learning.py     # Hedge online, optimizador, clasificador de régimen
 ├── engine.py       # orquestador walk-forward de dos niveles
+├── paper.py        # paper trading con dinero ficticio (libro mayor explícito)
 └── cli.py          # interfaz de línea de comandos
-tests/              # 34 tests (pytest)
-examples/           # demo con gráfico
+tests/              # 38 tests (pytest)
+examples/           # demos con gráficos (backtest y paper trading)
 ```
 
 ## Pruebas
 
 ```bash
-pytest -q   # 34 tests
+pytest -q   # 38 tests
 ```
 
 ## Limitaciones y honestidad metodológica

@@ -7,4 +7,6 @@ venv/
 build/
 dist/
 examples/equity_curve.png
+examples/paper_equity.png
+examples/paper_trades.csv
 .DS_Store
