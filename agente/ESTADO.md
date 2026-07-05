@@ -12,29 +12,25 @@ sección "Sinergias del portafolio".
 
 ## Siguiente acción
 
-Ciclo 1 — el dueño incorporó su app existente **Panoramas** al portafolio (directiva:
-"aprovecha lo que ya hay"). Por la regla de rentabilidad (escalar lo que ya existe
-gana a construir de cero), el ciclo 1 se dedica a Panoramas, más la auditoría de
-cuentas de la Fase 1:
+**Trabajo adelantado el 2026-07-05** (sesión fundadora, a pedido del dueño): la
+auditoría de Panoramas y su plan de lanzamiento + monetización ya están hechos — ver
+`agente/panoramas/LANZAMIENTO.md`. Conclusión: la app está lista para publicarse;
+solo faltan los pasos humanos de cuentas (Cloudflare, Supabase, ORS), documentados
+paso a paso en ese archivo.
 
-1. **Auditar Panoramas**: revisar el repo `PSR109/APP_Panoramas` (público — si no está
-   como fuente del entorno, leerlo vía web/raw.githubusercontent.com). Confirmado el
-   2026-07-05: la app **no está publicada en internet** — el dueño la corre localmente
-   en su PC, pero el código está al día en GitHub (commits del mismo día en la rama
-   `claude/vacation-activity-finder-pcogyh`). Determinar qué falta para desplegarla
-   según `docs/DEPLOY.md` (Cloudflare Pages + Supabase) y si sus servicios caben en
-   capa gratuita.
-1b. **Preparar el despliegue de Panoramas**: dejar todo listo para publicarla
-   (configuración, build, workflow) y reducir la parte humana al mínimo — idealmente
-   solo "conectar la cuenta de Cloudflare Pages al repo" con instrucciones exactas
-   paso a paso. Publicarla es la acción de mayor retorno del portafolio: sin URL
-   pública no hay tráfico ni ingresos posibles.
-2. **Plan de monetización de Panoramas**: gratis con ads como base; evaluar freemium
-   (ej. viajes guardados ilimitados, alertas de precios/tráfico como plan pago).
-   Dejar el plan escrito en esta sección del estado.
-3. **Auditoría de cuentas (Fase 1)**: AdSense / Stripe / Google Play.
-4. Si queda tiempo: aplicar sinergias inmediatas a Panoramas (legales desde la
-   plantilla, SEO on-page, footer de promoción cruzada).
+Ciclo 1 (próxima rutina):
+
+1. **Verificar si el dueño ya ejecutó los pasos de `agente/panoramas/LANZAMIENTO.md`**
+   (¿existe URL pública? probar `https://*.pages.dev` mencionada en el estado o
+   preguntar en el reporte). Si sí: ejecutar la sección "Qué hará el agente apenas
+   reciba la URL pública" de ese archivo. Si no: reiterar amablemente en el reporte
+   con el enlace al plan.
+2. **Auditoría de cuentas (Fase 1)**: AdSense / Stripe / Google Play (sigue pendiente).
+3. Mientras tanto, avanzar la sinergia de mayor retorno que no dependa del humano:
+   construir la **Calculadora de peajes Chile** (ver "Ideas en cartera") con los datos
+   públicos de `data/tolls` del repo de Panoramas — captura búsquedas desde ya y
+   enlazará a Panoramas cuando esté publicada. Respetar el máximo de 1 repo nuevo
+   por ciclo.
 
 ## Portafolio
 
@@ -68,7 +64,7 @@ cuentas de la Fase 1:
 | # | Acción | Por qué | Estado |
 |---|---|---|---|
 | 1 | Dar acceso del agente al repo `APP_Panoramas`: en la configuración del entorno de Claude Code, agregar `PSR109/APP_Panoramas` como fuente (o aprobar el diálogo de `add_repo` cuando el agente lo pida) | Sin esto el agente solo puede leer el repo por la web, no puede hacer commits ni deploys de Panoramas | ⏳ pendiente |
-| 2 | Cuando el agente deje listo el despliegue de Panoramas: crear/conectar la cuenta gratuita de Cloudflare Pages al repo siguiendo las instrucciones que el agente entregará | La app hoy solo corre en el PC del dueño; publicarla es prerequisito de cualquier ingreso | ⏳ pendiente |
+| 2 | **Publicar Panoramas**: seguir los pasos 1–4 de `agente/panoramas/LANZAMIENTO.md` (Cloudflare Pages + Supabase + OpenRouteService + secrets de GitHub, ~30–40 min, todo gratis) y pasarle al agente la URL resultante | La app está lista; publicarla es prerequisito de cualquier ingreso. Instrucciones exactas ya preparadas | ⏳ pendiente |
 
 ## Ideas en cartera (sinergias con Panoramas)
 
