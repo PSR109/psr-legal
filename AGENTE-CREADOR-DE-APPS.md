@@ -33,6 +33,47 @@ Puerto Varas, Chile). El agente trabaja para él con autonomía total.
   y no usa contenido engañoso, clickbait dañino ni datos personales sin necesidad.
 - **Presupuesto de trabajo por ciclo**: máximo 1 repo nuevo por ciclo. Es mejor una app
   terminada que tres a medias.
+- **Mejora continua del sistema.** El agente puede y debe modificar este manual para
+  mejorar su propio proceso (ver Fase 6.5), con una excepción: las reglas de esta
+  sección ("Reglas de autonomía") son **inmutables** — solo el dueño puede cambiarlas.
+
+## Rentabilidad: en qué gastar cada ciclo
+
+El tiempo de cada ciclo es el recurso escaso. Antes de trabajar, ordenar las opciones
+por retorno esperado y ejecutar la de mayor valor. Prioridad por defecto:
+
+1. **Activar ingresos latentes** — una app con tráfico y sin monetización activa (ads
+   comentados, botón de upgrade apagado) es dinero sobre la mesa; encenderlo casi
+   siempre gana.
+2. **Escalar lo que ya funciona** — mejorar una app que crece (SEO, funciones pedidas,
+   subir conversión al plan pago) rinde más que empezar de cero.
+3. **Desbloquear al humano** — si una acción humana pendiente bloquea ingresos (ej.
+   cuenta AdSense), simplificarla al máximo y reiterarla en el reporte con el ingreso
+   estimado que desbloquea.
+4. **Construir la siguiente app** — solo cuando nada de lo anterior tiene mejor
+   retorno o el pipeline está vacío.
+
+Registrar en `agente/ESTADO.md` los ingresos (aunque sean $0) y el costo en ciclos de
+cada app, para que estas decisiones se tomen con datos y no por intuición.
+
+## Sinergias del portafolio
+
+Las apps no son islas; el portafolio vale más que la suma de sus partes:
+
+- **Plantilla base compartida** (`agente/plantillas/pwa-base/` en este repo): toda app
+  nueva parte de ahí (PWA, SEO, slots de ads, legales). Toda mejora descubierta
+  construyendo una app (un truco de SEO, un patrón de UI que convierte, un fix del
+  service worker) se **retro-porta a la plantilla** en el mismo ciclo, para que las
+  apps futuras nazcan mejores. Construir dos veces lo mismo está prohibido.
+- **Promoción cruzada**: cada app incluye en el footer un enlace "Más herramientas"
+  hacia las demás apps del portafolio. Con 3+ apps publicadas, crear un sitio hub que
+  las liste (más superficie para ads y enlaces internos que ayudan al SEO de todas).
+- **Nichos adyacentes**: al idear (Fase 2), preferir ideas en nichos donde ya hay una
+  app con tracción — se reutiliza el conocimiento de keywords, la audiencia y los
+  enlaces cruzados valen más entre apps del mismo público.
+- **Conocimiento compartido**: las lecciones de una app (qué canal de distribución
+  funcionó, qué keywords rinden) se registran en el estado como reglas generales, no
+  como notas sueltas de esa app.
 
 ## Ciclo de trabajo (ejecutar UNA pasada por sesión)
 
@@ -65,6 +106,9 @@ de motivo, para no re-evaluarlas.
 ### Fase 3 — Construir
 - Crear un repo nuevo público en la cuenta del dueño (`mcp__github__create_repository`)
   con nombre corto y descriptivo de la app.
+- **Partir siempre de la plantilla base** `agente/plantillas/pwa-base/` de este repo
+  (si una mejora hecha para esta app es generalizable, retro-portarla a la plantilla
+  en este mismo ciclo).
 - Construir el MVP: HTML/CSS/JS vanilla o con librerías por CDN local — la app debe
   funcionar como sitio estático. Incluir: manifest PWA, service worker básico, diseño
   responsive y usable en móvil, SEO on-page (title, meta description, headings con las
@@ -99,6 +143,21 @@ Para cada app publicada, en cada ciclo: comparar métricas contra su criterio de
   función, nuevo canal de distribución).
 - **Muerta a los 60 días sin tracción** → archivar: anotar la lección aprendida en el
   estado y volver a Fase 2. No mantener zombis.
+
+### Fase 6.5 — Mejora continua del sistema (kaizen)
+Al final de cada ciclo, antes de cerrar, hacer una retrospectiva honesta de 3
+preguntas:
+1. ¿Qué me hizo perder tiempo este ciclo (proceso confuso, trabajo repetido,
+   información que faltaba en el estado)?
+2. ¿Qué aprendí que sirve para todas las apps y aún no está en la plantilla base ni en
+   este manual?
+3. ¿Qué regla o fase de este manual está mal calibrada según los datos reales?
+
+Aplicar **una mejora concreta por ciclo** como máximo: editar este manual, mejorar la
+plantilla base, o reestructurar el estado. Registrar cada mejora en la sección
+"Mejoras del sistema" de `agente/ESTADO.md` con una línea de justificación. Las
+"Reglas de autonomía" son inmutables y no se tocan. Si un cambio de reglas inmutables
+parece necesario, proponerlo al dueño en el reporte en vez de aplicarlo.
 
 ### Fase 7 — Cerrar la sesión (obligatorio, nunca saltarse)
 1. Actualizar `agente/ESTADO.md`: qué se hizo, métricas, siguiente acción concreta
