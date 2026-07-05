@@ -20,13 +20,14 @@ paso a paso en ese archivo.
 
 Ciclo 1 (próxima rutina):
 
-1. **Conseguir y verificar la URL pública de Panoramas.** El dueño confirmó
-   (2026-07-05) que los pasos 1–4 del lanzamiento están hechos, pero no entregó la
-   URL y las candidatas obvias de `*.pages.dev` no resuelven. Buscarla en: el repo
-   (commits/handoffs recientes suelen anotarla), o pedirla en el reporte como
-   primera línea. Apenas exista: ejecutar la sección "Qué hará el agente apenas
-   reciba la URL pública" de `agente/panoramas/LANZAMIENTO.md` (verificar sitio,
-   fijar criterio de éxito, pedir cuenta AdSense con instrucciones).
+1. **Panoramas está publicada**: https://panoramas.contacto-d1f.workers.dev/
+   (confirmada por el dueño el 2026-07-05). ⚠️ La política de red de este entorno
+   **bloquea `*.workers.dev`**, así que el agente no puede verificar ni monitorear el
+   sitio desde aquí (ver acción humana #3). Hallazgo clave: **AdSense no acepta
+   subdominios de plataformas** como `workers.dev`/`pages.dev` — para mostrar ads se
+   necesita dominio propio (ver acción humana #4). Mientras tanto, avanzar lo que no
+   depende del humano: SEO on-page de Panoramas (vía repo), textos de distribución
+   listos para copiar/pegar, y la calculadora de peajes.
 2. **Auditoría de cuentas (Fase 1)**: AdSense / Stripe / Google Play (sigue pendiente).
 3. Mientras tanto, avanzar la sinergia de mayor retorno que no dependa del humano:
    construir la **Calculadora de peajes Chile** (ver "Ideas en cartera") con los datos
@@ -38,7 +39,7 @@ Ciclo 1 (próxima rutina):
 
 | App | Repo | URL | Modelo | Estado | Criterio de éxito | Métrica actual |
 |---|---|---|---|---|---|---|
-| **Panoramas** (insignia) | [PSR109/APP_Panoramas](https://github.com/PSR109/APP_Panoramas) | sin publicar (corre local en el PC del dueño; código al día en GitHub) | Ads + freemium (por definir en ciclo 1) | Heredada del dueño — en desarrollo avanzado, pendiente de despliegue | Definir en ciclo 1 tras auditoría | — |
+| **Panoramas** (insignia) | [PSR109/APP_Panoramas](https://github.com/PSR109/APP_Panoramas) | **https://panoramas.contacto-d1f.workers.dev/** (✅ publicada 2026-07-05) | Ads (requiere dominio propio) + freemium | Publicada — pendiente verificación, dominio y monetización | 100 visitas orgánicas/semana a los 30 días del dominio propio | — |
 
 ### Notas de Panoramas (auditoría preliminar, 2026-07-05)
 
@@ -66,7 +67,10 @@ Ciclo 1 (próxima rutina):
 | # | Acción | Por qué | Estado |
 |---|---|---|---|
 | 1 | Dar acceso del agente al repo `APP_Panoramas`: en la configuración del entorno de Claude Code, agregar `PSR109/APP_Panoramas` como fuente (o aprobar el diálogo de `add_repo` cuando el agente lo pida) | Sin esto el agente solo puede leer el repo por la web, no puede hacer commits ni deploys de Panoramas | ⏳ pendiente |
-| 2 | ~~Publicar Panoramas (pasos 1–4 de `agente/panoramas/LANZAMIENTO.md`)~~ — **el dueño confirmó el 2026-07-05 que los 4 pasos están hechos** (Cloudflare Pages + Supabase + ORS + secrets). Falta solo que entregue la **URL pública**: el agente probó `app-panoramas`/`panoramas`/`psr-panoramas`/`panoramas-chile`.pages.dev sin éxito | Sin la URL no se puede verificar el sitio, fijar el SEO ni pedir AdSense | 🔶 casi lista — falta la URL |
+| 2 | ~~Publicar Panoramas~~ | Hecho: https://panoramas.contacto-d1f.workers.dev/ | ✅ completada 2026-07-05 |
+| 3 | Permitir que el agente vea el sitio: en claude.ai/code → configuración de este entorno → política de red, permitir `*.workers.dev` (o cambiar a política confiable/amplia) | El entorno bloquea `workers.dev`; sin esto el agente no puede verificar el sitio ni medir que siga vivo | ⏳ pendiente |
+| 4 | **Dominio propio para Panoramas** (~USD 10/año, único costo del portafolio): comprarlo idealmente en Cloudflare Registrar (precio de costo) y conectarlo al proyecto en el panel de Cloudflare. Sugerencias: `panoramas.app`, `panoramaschile.cl`, `mipanorama.cl` — decide el dueño | **AdSense no acepta subdominios `workers.dev`/`pages.dev`**: sin dominio propio no hay publicidad posible. Además mejora SEO y confianza | ⏳ pendiente — desbloquea TODOS los ingresos por ads |
+| 5 | Con el dominio activo: crear cuenta de Google AdSense en https://adsense.google.com con la cuenta Google del dueño, agregar el dominio como sitio y avisar al agente | El agente dejará entonces los bloques de anuncios integrados en la app | ⏳ bloqueada por #4 |
 
 ## Ideas en cartera (sinergias con Panoramas)
 
