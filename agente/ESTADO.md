@@ -20,11 +20,13 @@ paso a paso en ese archivo.
 
 Ciclo 1 (próxima rutina):
 
-1. **Verificar si el dueño ya ejecutó los pasos de `agente/panoramas/LANZAMIENTO.md`**
-   (¿existe URL pública? probar `https://*.pages.dev` mencionada en el estado o
-   preguntar en el reporte). Si sí: ejecutar la sección "Qué hará el agente apenas
-   reciba la URL pública" de ese archivo. Si no: reiterar amablemente en el reporte
-   con el enlace al plan.
+1. **Conseguir y verificar la URL pública de Panoramas.** El dueño confirmó
+   (2026-07-05) que los pasos 1–4 del lanzamiento están hechos, pero no entregó la
+   URL y las candidatas obvias de `*.pages.dev` no resuelven. Buscarla en: el repo
+   (commits/handoffs recientes suelen anotarla), o pedirla en el reporte como
+   primera línea. Apenas exista: ejecutar la sección "Qué hará el agente apenas
+   reciba la URL pública" de `agente/panoramas/LANZAMIENTO.md` (verificar sitio,
+   fijar criterio de éxito, pedir cuenta AdSense con instrucciones).
 2. **Auditoría de cuentas (Fase 1)**: AdSense / Stripe / Google Play (sigue pendiente).
 3. Mientras tanto, avanzar la sinergia de mayor retorno que no dependa del humano:
    construir la **Calculadora de peajes Chile** (ver "Ideas en cartera") con los datos
@@ -64,7 +66,7 @@ Ciclo 1 (próxima rutina):
 | # | Acción | Por qué | Estado |
 |---|---|---|---|
 | 1 | Dar acceso del agente al repo `APP_Panoramas`: en la configuración del entorno de Claude Code, agregar `PSR109/APP_Panoramas` como fuente (o aprobar el diálogo de `add_repo` cuando el agente lo pida) | Sin esto el agente solo puede leer el repo por la web, no puede hacer commits ni deploys de Panoramas | ⏳ pendiente |
-| 2 | **Publicar Panoramas**: seguir los pasos 1–4 de `agente/panoramas/LANZAMIENTO.md` (Cloudflare Pages + Supabase + OpenRouteService + secrets de GitHub, ~30–40 min, todo gratis) y pasarle al agente la URL resultante | La app está lista; publicarla es prerequisito de cualquier ingreso. Instrucciones exactas ya preparadas | ⏳ pendiente |
+| 2 | ~~Publicar Panoramas (pasos 1–4 de `agente/panoramas/LANZAMIENTO.md`)~~ — **el dueño confirmó el 2026-07-05 que los 4 pasos están hechos** (Cloudflare Pages + Supabase + ORS + secrets). Falta solo que entregue la **URL pública**: el agente probó `app-panoramas`/`panoramas`/`psr-panoramas`/`panoramas-chile`.pages.dev sin éxito | Sin la URL no se puede verificar el sitio, fijar el SEO ni pedir AdSense | 🔶 casi lista — falta la URL |
 
 ## Ideas en cartera (sinergias con Panoramas)
 
