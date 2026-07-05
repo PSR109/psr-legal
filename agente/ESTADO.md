@@ -29,11 +29,14 @@ Ciclo 1 (próxima rutina):
    depende del humano: SEO on-page de Panoramas (vía repo), textos de distribución
    listos para copiar/pegar, y la calculadora de peajes.
 2. **Auditoría de cuentas (Fase 1)**: AdSense / Stripe / Google Play (sigue pendiente).
-3. Mientras tanto, avanzar la sinergia de mayor retorno que no dependa del humano:
-   construir la **Calculadora de peajes Chile** (ver "Ideas en cartera") con los datos
-   públicos de `data/tolls` del repo de Panoramas — captura búsquedas desde ya y
-   enlazará a Panoramas cuando esté publicada. Respetar el máximo de 1 repo nuevo
-   por ciclo.
+3. **Auditar `PSR109/patagonia-sim-setups`** como candidata a segunda app insignia
+   (investigación 2026-07-05: nicho global con mercado pagado comprobado — ver "Ideas
+   en cartera"). Determinar: estado del código, qué falta para publicarla, y plan de
+   lanzamiento como el de Panoramas. También mirar `psr-analyzer-pro` de pasada.
+4. **SEO de contenido dentro de Panoramas** (no apps aparte): páginas "termas cerca de
+   [ciudad]", "panoramas con niños en [ciudad]", "qué hacer este fin de semana en
+   [ciudad]" — capturan búsquedas y alimentan la app principal. Requiere acceso al
+   repo (acción humana #1) o entregar el contenido listo en `agente/panoramas/`.
 
 ## Portafolio
 
@@ -72,27 +75,35 @@ Ciclo 1 (próxima rutina):
 | 4 | **Dominio propio para Panoramas** (~USD 10/año, único costo del portafolio): comprarlo idealmente en Cloudflare Registrar (precio de costo) y conectarlo al proyecto en el panel de Cloudflare. Sugerencias: `panoramas.app`, `panoramaschile.cl`, `mipanorama.cl` — decide el dueño | **AdSense no acepta subdominios `workers.dev`/`pages.dev`**: sin dominio propio no hay publicidad posible. Además mejora SEO y confianza | ⏳ pendiente — desbloquea TODOS los ingresos por ads |
 | 5 | Con el dominio activo: crear cuenta de Google AdSense en https://adsense.google.com con la cuenta Google del dueño, agregar el dominio como sitio y avisar al agente | El agente dejará entonces los bloques de anuncios integrados en la app | ⏳ bloqueada por #4 |
 
-## Ideas en cartera (sinergias con Panoramas)
+## Ideas en cartera
 
-Apps satélite baratas que reutilizan los datos/librerías de Panoramas y le devuelven
-tráfico con enlaces cruzados — candidatas para cuando Panoramas esté lanzada:
+**Prioridad 1 — Sim Setups (segunda insignia, ya construida).** El dueño ya tiene
+`PSR109/patagonia-sim-setups` ("app generadora y educativa de setups de autos para 7
+simuladores", TypeScript) y `PSR109/psr-analyzer-pro`. Investigación 2026-07-05: el
+nicho sim racing tiene **mercado pagado comprobado** (onRails/virtualracecarengineer,
+GO Setups, Track Titan, simracingsetup.com venden setups y suscripciones) → freemium
+validado, audiencia global en inglés (mejor RPM de ads que Chile), y sinergia directa
+con la marca Patagonia SimRacing y su pipeline de contenido en redes (PSR Pipeline).
+Costo de entrada ≈ 0 porque la app ya existe. Siguiente paso: auditoría (ciclo 1).
 
-- **Calculadora de peajes Chile**: ruta A→B con costo de peajes/TAG. Keyword con
-  búsqueda recurrente, construible como PWA estática con los datos de `data/tolls`.
-- **Calculadora de costo de viaje en auto** (bencina + peajes): reutiliza `lib/fuel` y
-  `lib/tolls`. Nicho de búsqueda amplio ("cuánto cuesta ir de X a Y").
-- **¿Qué hacer este fin de semana en [ciudad]?**: páginas SEO estáticas por ciudad
-  generadas desde los datos de atracciones, apuntando a Panoramas para el detalle.
+**Prioridad 2 — Contenido SEO dentro de Panoramas** (no apps aparte): páginas por
+ciudad/categoría ("termas cerca de Santiago con precios", "panoramas con niños en
+[ciudad]") generadas desde los datos de atracciones. Refuerzan la insignia en vez de
+fragmentar el portafolio.
+
+## Ideas evaluadas
+
+| Idea | Veredicto | Motivo (2026-07-05) |
+|---|---|---|
+| Calculadora de peajes Chile (app aparte) | ❌ descartada | Nicho saturado: chilepeajes.cl, peajeschile.com, inforutas.cl, peajeruta.cl, todotag.cl, tagchile.com, TollGuru — sin ángulo diferenciador para una app nueva. Como *función/página de Panoramas* sigue siendo válida |
+| Calculadora de costo de viaje en auto (app aparte) | ❌ descartada | Mismo nicho saturado (servidos.ar, tagchile.com, etc.). Es exactamente el corazón de Panoramas: reforzar ahí, no duplicar |
+| Calculadora de sueldo líquido Chile | ❌ descartada | 10+ competidores idénticos (Buk, Talana, misueldo.cl, cuantogano.cl…) — imposible destacar sin inversión en SEO |
 
 ## Mejoras del sistema
 
 | Fecha | Mejora | Justificación |
 |---|---|---|
 | 2026-07-05 | Fase 6.5 (kaizen), reglas de rentabilidad y sinergias agregadas al manual; plantilla base `agente/plantillas/pwa-base/` creada | Directiva del dueño: mejora continua, máxima rentabilidad, sinergias y optimización de recursos |
-
-## Ideas evaluadas
-
-_(vacío)_
 
 ## Lecciones aprendidas
 
