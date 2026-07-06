@@ -109,6 +109,7 @@ fragmentar el portafolio.
 | Fecha | Mejora | Justificación |
 |---|---|---|
 | 2026-07-05 | Fase 6.5 (kaizen), reglas de rentabilidad y sinergias agregadas al manual; plantilla base `agente/plantillas/pwa-base/` creada | Directiva del dueño: mejora continua, máxima rentabilidad, sinergias y optimización de recursos |
+| 2026-07-05 | Sección "Caja de herramientas" en el manual (usar subagentes/workflows/búsqueda/MCPs; buscar-instalar-crear herramientas; skills propias cuando un procedimiento se estabilice) + pregunta 4 del kaizen (¿qué herramienta me faltó?) + primeras herramientas propias: `agente/herramientas/verificar-sitios.sh` y `sitios.txt` (probadas: distinguen caída real de bloqueo de red) | Directiva del dueño: que el agente use, busque, instale o cree las herramientas que lo hagan cada día mejor, más rentable y más autónomo |
 
 ## Lecciones aprendidas
 
