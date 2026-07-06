@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-06T06:10:00Z",
-  "actualizado_por": "Sesión fundadora (pre-ciclo 1)",
+  "actualizado": "2026-07-06T21:00:00Z",
+  "actualizado_por": "Guía EN de San Pedro de Atacama publicada (USD, hreflang, sitemap)",
   "metrica_norte": {
     "moneda": "USD",
     "ingresos_mes": 0,
@@ -79,8 +79,8 @@
       "url": "https://psr109.github.io/psr-legal/guias/",
       "repo": "https://github.com/PSR109/psr-legal",
       "estado": "Publicada",
-      "avance_pct": 70,
-      "avance_detalle": "7 páginas SEO (Puerto Varas, Petrohué, Frutillar, Torres del Paine ES+EN, San Pedro) con botones Viator/Civitatis integrados. Falta: ID de afiliado (acción #7), más destinos, Search Console",
+      "avance_pct": 72,
+      "avance_detalle": "8 páginas SEO (Puerto Varas, Petrohué, Frutillar, Torres del Paine ES+EN, San Pedro ES+EN) con botones Viator/Civitatis integrados. Falta: ID de afiliado (acción #7), más destinos, Search Console",
       "modelo": "Afiliación Viator/Civitatis (Etapa 0)",
       "criterio_exito": "Primera reserva afiliada; 50 visitas orgánicas/semana a 60 días",
       "metrica_actual": "recién publicada",

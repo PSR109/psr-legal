@@ -14,5 +14,14 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://psr109.github.io/psr-legal/guias/torres-del-paine.html"/>
     <changefreq>monthly</changefreq><priority>0.9</priority>
   </url>
-  <url><loc>https://psr109.github.io/psr-legal/guias/san-pedro-de-atacama.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url>
+    <loc>https://psr109.github.io/psr-legal/guias/san-pedro-de-atacama.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://psr109.github.io/psr-legal/guias/en/san-pedro-de-atacama.html"/>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://psr109.github.io/psr-legal/guias/en/san-pedro-de-atacama.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://psr109.github.io/psr-legal/guias/san-pedro-de-atacama.html"/>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
 </urlset>

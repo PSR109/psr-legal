@@ -80,7 +80,7 @@ Ciclo 1 (próxima rutina):
 |---|---|---|---|---|---|---|
 | **Panoramas** (insignia CL) | [PSR109/APP_Panoramas](https://github.com/PSR109/APP_Panoramas) | **https://panoramas.contacto-d1f.workers.dev/** (✅ publicada 2026-07-05) | Ads (vía subdominio propio) + freemium | Publicada — pendiente subdominio y monetización | 100 visitas orgánicas/semana a los 30 días del dominio propio | — |
 | **Sim Setups** (insignia global) | [PSR109/patagonia-sim-setups](https://github.com/PSR109/patagonia-sim-setups) | **https://patagonia-sim-setups.vercel.app** (✅ ya estaba publicada) | Ads + freemium "PSR Pro" (mercado pagado comprobado) | Publicada — ⚠️ SQLite en Vercel pierde datos de usuarios: migrar BD antes de captar usuarios. Plan completo en `agente/sim-setups/LANZAMIENTO.md` | Definir tras migración de BD y subdominio | — |
-| **Guías de Chile** (activo de tráfico + afiliación) | este repo, `guias/` | **https://psr109.github.io/psr-legal/guias/** (GitHub Pages) | Afiliación Viator/Civitatis (Etapa 0) — botones ya integrados, se activan con el ID en `guias/afiliados.js` | Publicada 2026-07-06 — 7 páginas SEO (Puerto Varas, Petrohué, Frutillar, Torres del Paine ES+EN, San Pedro) con FAQPage/hreflang/sitemap y cross-promo a Panoramas | Primera reserva afiliada; 50 visitas orgánicas/semana a 60 días | — |
+| **Guías de Chile** (activo de tráfico + afiliación) | este repo, `guias/` | **https://psr109.github.io/psr-legal/guias/** (GitHub Pages) | Afiliación Viator/Civitatis (Etapa 0) — botones ya integrados, se activan con el ID en `guias/afiliados.js` | Publicada 2026-07-06 — 8 páginas SEO (Puerto Varas, Petrohué, Frutillar, Torres del Paine ES+EN, San Pedro ES+EN) con FAQPage/hreflang/sitemap y cross-promo a Panoramas | Primera reserva afiliada; 50 visitas orgánicas/semana a 60 días | — |
 
 ### Notas de Panoramas (auditoría preliminar, 2026-07-05)
 
@@ -171,5 +171,14 @@ acción humana de distancia (cuenta de afiliados, #7). *¿Cómo aumentarlas más
 dueño hace #7 hoy → comisiones activas en minutos; (b) siguiente palanca autónoma:
 más páginas de guías apuntando a destinos con tours caros (Patagonia en inglés, USD);
 (c) cuando haya acceso al repo de Panoramas (#1), enlazar cada panorama a su tour.
+
+**2026-07-06 — Guía EN de San Pedro de Atacama (activo de tráfico del ciclo)**: se
+recreó y publicó `guias/en/san-pedro-de-atacama.html` (precios en USD, FAQPage,
+botones Viator/Civitatis pre-cableados), con hreflang cruzado ES↔EN (se agregó el
+par de `hreflang` a la versión ES, que no lo tenía), tarjeta en `guias/index.html` y
+entradas en `sitemap.xml` (ES con alternate + nueva URL EN). Las guías pasan de 7 a 8
+páginas. Objetivo: capturar búsquedas en inglés (RPM más alto) hacia destinos de tours
+caros. Rama `claude/quirky-euler-iyrwva` + PR en borrador. Sigue faltando SOLO la
+acción humana #7 (cuenta de afiliados) para el primer peso.
 
 _(el ciclo 1 automático corre con la primera ejecución de la rutina diaria)_
