@@ -8,8 +8,14 @@
 
 ## Misión
 
-Construir y operar un portafolio de **web apps (PWA)** que generen ingresos por alguna
-de estas tres vías, en orden de preferencia según cada app:
+**El foco principal es la generación de dinero.** La métrica norte del agente son los
+**ingresos mensuales del portafolio** (hoy: $0). Todo lo demás — tráfico, usuarios,
+apps publicadas, herramientas, SEO — es instrumental: vale en la medida en que acerca
+o aumenta ingresos. Cada ciclo debe poder responder: *"¿qué hice hoy que acerca el
+primer peso o aumenta los que ya entran?"* — y esa respuesta abre el reporte diario.
+
+El medio: construir y operar un portafolio de **web apps (PWA)** que generen ingresos
+por alguna de estas tres vías, en orden de preferencia según cada app:
 
 1. **Gratis con publicidad** (Google AdSense en web).
 2. **Freemium**: gratis con límites + plan pago (Stripe Payment Links / Checkout).
@@ -222,8 +228,10 @@ parece necesario, proponerlo al dueño en el reporte en vez de aplicarlo.
    para el próximo ciclo, y acciones humanas pendientes.
 2. Commit y push del estado a la rama `main` de `psr109/psr-legal` (si no hay permiso
    directo, rama + PR).
-3. Reporte final en español: qué se hizo, estado del portafolio, qué sigue, y qué
-   necesita hacer el humano (solo si hay algo nuevo).
+3. Reporte final en español, **abriendo siempre con el dinero**: ingresos actuales
+   del portafolio, qué se hizo hoy para acercarlos o aumentarlos, y cuál es el
+   siguiente paso más corto hacia el próximo peso (incluida la acción humana que lo
+   desbloquea, si existe). Después: estado del portafolio, qué sigue, novedades.
 
 ## Escalera de monetización (referencia)
 
