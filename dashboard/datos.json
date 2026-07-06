@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-07-06T04:50:00Z",
+  "actualizado": "2026-07-06T06:10:00Z",
   "actualizado_por": "Sesión fundadora (pre-ciclo 1)",
   "metrica_norte": {
     "moneda": "USD",
@@ -9,8 +9,8 @@
   },
   "en_curso_ahora": [
     "Primer ciclo automático: 2026-07-06 ~12:00 UTC (~8:00 Chile)",
-    "Despliegue del dashboard en cola por incidencia transitoria de GitHub Pages",
-    "Nueva Etapa 0 de monetización descubierta: afiliación de actividades (Viator/Civitatis) — no requiere dominio propio"
+    "✅ Dashboard desplegado: la incidencia de GitHub Pages se resolvió",
+    "🆕 Guías de Chile publicada: sitio SEO con afiliación pre-cableada — el primer peso está a UNA acción humana (#7)"
   ],
   "ruta_primer_peso": [
     {
@@ -19,24 +19,29 @@
       "estado": "hecho"
     },
     {
-      "paso": "🏁 VÍA RÁPIDA: cuenta de afiliados Viator/Civitatis (gratis, ~10 min, sin dominio propio)",
+      "paso": "Construir activo de tráfico con afiliación pre-integrada (Guías de Chile)",
+      "responsable": "agente",
+      "estado": "hecho"
+    },
+    {
+      "paso": "🏁 ÚNICO PASO RESTANTE: cuenta de afiliados Viator/Civitatis (gratis, ~10 min) y pegar el ID en el chat",
       "responsable": "humano (acción #7)",
       "estado": "pendiente"
     },
     {
-      "paso": "Integrar enlaces de afiliado en los panoramas (8–12% por reserva)",
-      "responsable": "agente",
-      "estado": "bloqueado (necesita acceso al repo + ID de afiliado)"
+      "paso": "Activar el ID en guias/afiliados.js → comisiones de 2–12% por reserva",
+      "responsable": "agente (minutos)",
+      "estado": "listo para ejecutar"
     },
     {
-      "paso": "Vía paralela: subdominios en patagoniasimracing.cl → AdSense → ads",
+      "paso": "Vía paralela: subdominios patagoniasimracing.cl → AdSense → ads",
       "responsable": "humano (#4, #5) + agente",
       "estado": "pendiente"
     },
     {
-      "paso": "Tráfico: SEO + distribución (un activo por ciclo)",
+      "paso": "Tráfico: más guías de destinos caros (EN/USD) + SEO Panoramas",
       "responsable": "agente",
-      "estado": "pendiente"
+      "estado": "en curso (un activo por ciclo)"
     }
   ],
   "apps": [
@@ -65,6 +70,20 @@
       "modelo": "Ads + freemium PSR Pro",
       "criterio_exito": "definir tras migración de BD",
       "metrica_actual": "sin medición aún",
+      "ingresos_mes": 0,
+      "costos_mes": 0
+    },
+    {
+      "nombre": "Guías de Chile",
+      "etiqueta": "activo de tráfico",
+      "url": "https://psr109.github.io/psr-legal/guias/",
+      "repo": "https://github.com/PSR109/psr-legal",
+      "estado": "Publicada",
+      "avance_pct": 70,
+      "avance_detalle": "7 páginas SEO (Puerto Varas, Petrohué, Frutillar, Torres del Paine ES+EN, San Pedro) con botones Viator/Civitatis integrados. Falta: ID de afiliado (acción #7), más destinos, Search Console",
+      "modelo": "Afiliación Viator/Civitatis (Etapa 0)",
+      "criterio_exito": "Primera reserva afiliada; 50 visitas orgánicas/semana a 60 días",
+      "metrica_actual": "recién publicada",
       "ingresos_mes": 0,
       "costos_mes": 0
     }
@@ -96,8 +115,8 @@
     },
     {
       "id": 7,
-      "titulo": "Cuenta de afiliados Viator y/o Civitatis (~10 min, gratis)",
-      "desbloquea": "LA ruta más corta al primer peso: 8–12% por reserva",
+      "titulo": "Cuenta de afiliados Viator y/o Civitatis (~10 min, gratis) y pegar el ID en el chat",
+      "desbloquea": "el ÚNICO paso restante al primer peso: las Guías de Chile ya tienen los botones integrados — el agente activa el ID en minutos",
       "estado": "pendiente — máxima prioridad"
     },
     {
@@ -126,6 +145,10 @@
     {
       "fecha": "2026-07-05",
       "resumen": "Sesión fundadora: sistema del agente creado (manual, estado, rutina diaria, plantilla PWA, herramientas), Panoramas y Sim Setups auditadas e incorporadas con planes de lanzamiento, 3 nichos descartados con evidencia, atajo de subdominios descubierto, dashboard creado"
+    },
+    {
+      "fecha": "2026-07-06",
+      "resumen": "Pre-ciclo: Guías de Chile construida y publicada en Pages (7 páginas SEO, afiliación pre-cableada en guias/afiliados.js, sitemap+hreflang). El primer peso queda a una sola acción humana (#7). Dashboard desplegado tras resolverse la incidencia de GitHub"
     }
   ],
   "mejoras_sistema": [
@@ -156,6 +179,10 @@
     {
       "fecha": "2026-07-06",
       "mejora": "Pregunta obligatoria de utilidades en cada sesión + horarios objetivo 11:30/21:00 Chile"
+    },
+    {
+      "fecha": "2026-07-06",
+      "mejora": "Guías de Chile: activo de tráfico propio con monetización lista-para-encender"
     }
   ],
   "herramientas": [
@@ -170,6 +197,10 @@
     {
       "nombre": "dashboard/datos.json",
       "uso": "fuente de datos de este tablero, actualizada cada ciclo"
+    },
+    {
+      "nombre": "guias/afiliados.js",
+      "uso": "interruptor central de afiliación: un ID enciende todas las comisiones"
     }
   ]
 }
