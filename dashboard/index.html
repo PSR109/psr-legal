@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Agente Creador de Apps</title>
+<meta name="robots" content="noindex">
+<style>
+  :root {
+    --bg: #f6f7f9; --surface: #ffffff; --ink: #1a1f26; --ink-2: #5b6572; --ink-3: #8a93a0;
+    --line: #e3e7ec; --accent: #2563eb; --accent-soft: #dbeafe;
+    --good: #15803d; --good-soft: #dcfce7; --warn: #b45309; --warn-soft: #fef3c7;
+    --bad: #b91c1c; --bad-soft: #fee2e2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #10141a; --surface: #1a2029; --ink: #e8ecf1; --ink-2: #a8b2bf; --ink-3: #77818e;
+      --line: #2a323d; --accent: #60a5fa; --accent-soft: #1e3a5f;
+      --good: #4ade80; --good-soft: #14351f; --warn: #fbbf24; --warn-soft: #3a2c10;
+      --bad: #f87171; --bad-soft: #3b1717;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg);
+         color: var(--ink); line-height: 1.5; padding: 24px 16px 60px; }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; margin-bottom: 20px; }
+  h1 { font-size: 1.35rem; }
+  .stamp { color: var(--ink-3); font-size: .82rem; }
+  h2 { font-size: .95rem; color: var(--ink-2); text-transform: uppercase; letter-spacing: .04em;
+       margin: 28px 0 12px; }
+  .grid { display: grid; gap: 12px; }
+  .kpis { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .kpi .lbl { font-size: .8rem; color: var(--ink-2); }
+  .kpi .val { font-size: 2rem; font-weight: 700; letter-spacing: -.02em; margin-top: 2px; }
+  .kpi .sub { font-size: .78rem; color: var(--ink-3); margin-top: 4px; }
+  .kpi.hero { border-left: 4px solid var(--accent); }
+  .chip { display: inline-flex; align-items: center; gap: 5px; font-size: .74rem; font-weight: 600;
+          padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+  .chip.ok   { background: var(--good-soft); color: var(--good); }
+  .chip.pend { background: var(--warn-soft); color: var(--warn); }
+  .chip.bloq { background: var(--bad-soft); color: var(--bad); }
+  .apps { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .app h3 { font-size: 1.02rem; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .tag { font-size: .7rem; color: var(--ink-3); border: 1px solid var(--line); border-radius: 99px; padding: 1px 8px; }
+  .app .links { font-size: .78rem; margin: 4px 0 10px; }
+  .app .links a { color: var(--accent); text-decoration: none; margin-right: 12px; }
+  .bar { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; margin: 6px 0 4px; }
+  .bar > span { display: block; height: 100%; background: var(--accent); border-radius: 4px; }
+  .pct { font-size: .78rem; color: var(--ink-2); }
+  .det { font-size: .8rem; color: var(--ink-2); margin-top: 8px; }
+  .kv { font-size: .78rem; color: var(--ink-3); margin-top: 8px; display: grid; gap: 2px; }
+  table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+  th { text-align: left; color: var(--ink-3); font-size: .72rem; text-transform: uppercase;
+       letter-spacing: .04em; padding: 6px 10px; border-bottom: 1px solid var(--line); }
+  td { padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  .scroll { overflow-x: auto; }
+  ol, ul { padding-left: 20px; font-size: .86rem; }
+  li { margin: 4px 0; }
+  #chart-empty { color: var(--ink-3); font-size: .84rem; padding: 26px 10px; text-align: center; }
+  svg text { fill: var(--ink-2); font-size: 11px; }
+  .tools li, .mejoras li { color: var(--ink-2); }
+  .err { background: var(--warn-soft); color: var(--warn); border-radius: 10px; padding: 14px 16px;
+         font-size: .86rem; display: none; }
+  footer { margin-top: 36px; color: var(--ink-3); font-size: .76rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🤖 Agente Creador de Apps — Dashboard</h1>
+    <span class="stamp" id="stamp">cargando…</span>
+  </header>
+
+  <div class="err" id="err">No pude cargar <code>datos.json</code>. Si abriste este archivo
+  directo desde el disco, sírvelo por HTTP (GitHub Pages) para ver los datos.</div>
+
+  <h2>💰 Métrica norte — utilidad neta</h2>
+  <div class="grid kpis">
+    <div class="card kpi hero"><div class="lbl">Utilidad neta / mes</div><div class="val" id="k-util">—</div><div class="sub">ingresos − costos · la cifra que manda</div></div>
+    <div class="card kpi"><div class="lbl">Ingresos / mes</div><div class="val" id="k-ing">—</div><div class="sub" id="k-ing-sub"></div></div>
+    <div class="card kpi"><div class="lbl">Costos / mes</div><div class="val" id="k-cos">—</div><div class="sub">regla: costos ≤ ingresos, siempre</div></div>
+    <div class="card kpi"><div class="lbl">Apps publicadas</div><div class="val" id="k-apps">—</div><div class="sub" id="k-apps-sub"></div></div>
+  </div>
+
+  <h2>📈 Ingresos diarios</h2>
+  <div class="card" id="chart-card">
+    <div id="chart"></div>
+    <div id="chart-empty">Sin ingresos registrados todavía. Este gráfico cobra vida con el primer peso —
+    la ruta más corta para eso está justo abajo. ⬇️</div>
+  </div>
+
+  <h2>🎯 Ruta al primer peso</h2>
+  <div class="card scroll"><table id="t-ruta">
+    <thead><tr><th>Paso</th><th>Responsable</th><th>Estado</th></tr></thead><tbody></tbody>
+  </table></div>
+
+  <h2>📱 Portafolio</h2>
+  <div class="grid apps" id="apps"></div>
+
+  <h2>⚡ En curso ahora</h2>
+  <div class="card"><ul id="ahora"></ul></div>
+
+  <h2>🙋 Acciones pendientes del humano</h2>
+  <div class="card scroll"><table id="t-acc">
+    <thead><tr><th>#</th><th>Acción</th><th>Qué desbloquea</th><th>Estado</th></tr></thead><tbody></tbody>
+  </table></div>
+
+  <h2>🧭 Directivas del dueño</h2>
+  <div class="card"><ol id="directivas"></ol></div>
+
+  <h2>🛠 Herramientas del agente</h2>
+  <div class="card"><ul id="tools" class="tools"></ul></div>
+
+  <h2>📚 Historial de ciclos</h2>
+  <div class="card scroll"><table id="t-hist">
+    <thead><tr><th>Fecha</th><th>Resumen</th></tr></thead><tbody></tbody>
+  </table></div>
+
+  <h2>🔁 Mejoras del sistema</h2>
+  <div class="card"><ul id="mejoras" class="mejoras"></ul></div>
+
+  <footer>Fuente: <code>dashboard/datos.json</code> — el agente lo actualiza en cada ciclo.
+  Memoria completa: <code>agente/ESTADO.md</code> · Manual: <code>AGENTE-CREADOR-DE-APPS.md</code></footer>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money = (n, cur) => (n === 0 ? '$0' : new Intl.NumberFormat('es-CL', {style:'currency', currency: cur||'USD', maximumFractionDigits: 0}).format(n));
+const chip = (estado) => {
+  const e = String(estado).toLowerCase();
+  if (e.includes('bloque') || e.includes('riesgo') || e.includes('caid')) return `<span class="chip bloq">⛔ ${esc(estado)}</span>`;
+  if (e.startsWith('hecho') || e.startsWith('complet') || e.startsWith('public')) return `<span class="chip ok">✔ ${esc(estado)}</span>`;
+  return `<span class="chip pend">⏳ ${esc(estado)}</span>`;
+};
+
+function pintar(d) {
+  const cur = d.metrica_norte.moneda;
+  $('stamp').textContent = `Actualizado: ${new Date(d.actualizado).toLocaleString('es-CL')} · por ${d.actualizado_por}`;
+  $('k-util').textContent = money(d.metrica_norte.utilidad_neta, cur);
+  $('k-ing').textContent  = money(d.metrica_norte.ingresos_mes, cur);
+  $('k-cos').textContent  = money(d.metrica_norte.costos_mes, cur);
+  const pub = d.apps.filter(a => a.estado.toLowerCase().includes('public')).length;
+  $('k-apps').textContent = `${pub} / ${d.apps.length}`;
+  $('k-apps-sub').textContent = d.apps.map(a => a.nombre).join(' · ');
+
+  $('t-ruta').tBodies[0].innerHTML = d.ruta_primer_peso.map(p =>
+    `<tr><td>${esc(p.paso)}</td><td>${esc(p.responsable)}</td><td>${chip(p.estado)}</td></tr>`).join('');
+
+  $('apps').innerHTML = d.apps.map(a => `
+    <div class="card app">
+      <h3>${esc(a.nombre)} <span class="tag">${esc(a.etiqueta)}</span> ${chip(a.estado)}</h3>
+      <div class="links"><a href="${esc(a.url)}">sitio</a><a href="${esc(a.repo)}">repo</a></div>
+      <div class="bar"><span style="width:${Math.max(0,Math.min(100,a.avance_pct))}%"></span></div>
+      <div class="pct">${a.avance_pct}% hacia "generando dinero"</div>
+      <div class="det">${esc(a.avance_detalle)}</div>
+      <div class="kv">
+        <span><b>Modelo:</b> ${esc(a.modelo)}</span>
+        <span><b>Éxito:</b> ${esc(a.criterio_exito)} · <b>Métrica:</b> ${esc(a.metrica_actual)}</span>
+        <span><b>Ingresos:</b> ${money(a.ingresos_mes, cur)} · <b>Costos:</b> ${money(a.costos_mes, cur)}</span>
+      </div>
+    </div>`).join('');
+
+  $('ahora').innerHTML = d.en_curso_ahora.map(x => `<li>${esc(x)}</li>`).join('');
+  $('t-acc').tBodies[0].innerHTML = d.acciones_humano.map(a =>
+    `<tr><td>${a.id}</td><td>${esc(a.titulo)}</td><td>${esc(a.desbloquea)}</td><td>${chip(a.estado)}</td></tr>`).join('');
+  $('directivas').innerHTML = d.directivas.map(x => `<li>${esc(x)}</li>`).join('');
+  $('tools').innerHTML = d.herramientas.map(t => `<li><b>${esc(t.nombre)}</b> — ${esc(t.uso)}</li>`).join('');
+  $('t-hist').tBodies[0].innerHTML = d.historial_ciclos.map(h =>
+    `<tr><td style="white-space:nowrap">${esc(h.fecha)}</td><td>${esc(h.resumen)}</td></tr>`).join('');
+  $('mejoras').innerHTML = d.mejoras_sistema.map(m => `<li><b>${esc(m.fecha)}</b> — ${esc(m.mejora)}</li>`).join('');
+
+  dibujarIngresos(d.ingresos_diarios || [], cur);
+}
+
+function dibujarIngresos(serie, cur) {
+  if (!serie.length) return; // estado vacío ya visible
+  $('chart-empty').style.display = 'none';
+  const W = Math.min(1000, $('chart-card').clientWidth - 20), H = 220, m = {t:14,r:12,b:26,l:46};
+  const xs = serie.map(p => new Date(p.fecha).getTime());
+  const ys = serie.map(p => p.monto);
+  const x0 = Math.min(...xs), x1 = Math.max(...xs), y1 = Math.max(...ys, 1);
+  const X = t => m.l + (W - m.l - m.r) * (x1 === x0 ? .5 : (t - x0) / (x1 - x0));
+  const Y = v => H - m.b - (H - m.t - m.b) * (v / y1);
+  const path = serie.map((p,i) => `${i ? 'L' : 'M'}${X(xs[i]).toFixed(1)},${Y(ys[i]).toFixed(1)}`).join(' ');
+  const ticksY = [0, y1/2, y1];
+  let svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Ingresos diarios">`;
+  for (const v of ticksY) svg += `<line x1="${m.l}" x2="${W-m.r}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)" stroke-width="1"/>`
+    + `<text x="${m.l-6}" y="${Y(v)+4}" text-anchor="end">${money(Math.round(v), cur)}</text>`;
+  svg += `<path d="${path}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>`;
+  const last = serie[serie.length-1];
+  svg += `<circle cx="${X(xs[xs.length-1])}" cy="${Y(last.monto)}" r="4" fill="var(--accent)" stroke="var(--surface)" stroke-width="2"/>`
+       + `<text x="${X(xs[xs.length-1])-6}" y="${Y(last.monto)-10}" text-anchor="end" font-weight="600">${money(last.monto, cur)}</text>`;
+  svg += `<text x="${m.l}" y="${H-8}">${new Date(x0).toLocaleDateString('es-CL')}</text>`
+       + `<text x="${W-m.r}" y="${H-8}" text-anchor="end">${new Date(x1).toLocaleDateString('es-CL')}</text></svg>`;
+  $('chart').innerHTML = svg;
+}
+
+fetch('datos.json', {cache: 'no-store'})
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(pintar)
+  .catch(() => { $('err').style.display = 'block'; $('stamp').textContent = 'sin datos'; });
+</script>
+</body>
+</html>
