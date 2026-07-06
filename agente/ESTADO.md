@@ -28,6 +28,13 @@
 | Ingresos mensuales | **$0** | 2026-07-05 |
 | Costos mensuales | **$0** (solo capas gratuitas) | 2026-07-05 |
 | **Utilidad neta** | **$0** — positiva por construcción: con costos $0, cada peso que entre es ganancia | 2026-07-05 |
+
+**🏁 Ruta MÁS corta al primer peso (descubierta 2026-07-06): afiliación de
+actividades.** Viator (8–12% de comisión) y Civitatis (2–10%) tienen registro
+gratuito y **no exigen dominio propio** — funcionan hoy mismo en la URL workers.dev
+de Panoramas. El humano registra la cuenta (~10 min, acción #7) y el agente integra
+los enlaces de reserva en cada panorama (necesita acceso al repo, acción #1). La
+ruta AdSense (subdominios → cuenta → ads) sigue en paralelo como Etapa 1.
 | **Ruta más corta al primer peso** | Subdominios en `patagoniasimracing.cl` (acción humana #4, gratis, ~15 min) → cuenta AdSense (#5) → el agente integra los ads en ambas apps → primer peso con las primeras visitas | — |
 
 ## Siguiente acción
@@ -99,7 +106,10 @@ Ciclo 1 (próxima rutina):
 | 3b | (Opcional, tras #3) Para que el agente configure los subdominios por ti: crear un token de API de Cloudflare con permiso `Zone.DNS Edit` sobre `patagoniasimracing.cl` (dash.cloudflare.com → My Profile → API Tokens) y un token de Vercel (vercel.com/account/tokens), y pasárselos al agente en el chat | Con red abierta + tokens, el agente ejecuta la acción #4 completa por API sin que el dueño toque nada | ⏳ opcional |
 | 4 | **Subdominios en `patagoniasimracing.cl`** (~15 min, GRATIS — reemplaza la compra de dominio): `setups.patagoniasimracing.cl` → Vercel y `panoramas.patagoniasimracing.cl` → Cloudflare Worker. Pasos exactos en `agente/sim-setups/LANZAMIENTO.md` | AdSense no acepta `workers.dev`/`vercel.app` pero **sí subdominios de un dominio propio** — esto desbloquea los ads de AMBAS apps sin costo. (Dominio dedicado para Panoramas: opcional, cuando haya tracción) | ⏳ pendiente — desbloquea TODOS los ingresos por ads |
 | 5 | Con los subdominios activos: crear cuenta de Google AdSense en https://adsense.google.com y agregar `patagoniasimracing.cl` como sitio (cubre los subdominios), luego avisar al agente | El agente integra entonces los bloques de anuncios en ambas apps | ⏳ bloqueada por #4 |
-| 6 | **Activar GitHub Pages para ver el dashboard** (1 clic): github.com/PSR109/psr-legal → Settings → Pages → Source: Deploy from a branch → `main` / root → Save. El tablero queda en `https://psr109.github.io/psr-legal/dashboard/` | Dashboard en vivo con todo: utilidad, avances, portafolio, acciones — se actualiza solo con cada ciclo del agente | ⏳ pendiente (si Pages ya estaba activo, solo abre la URL) |
+| 6 | **Activar GitHub Pages para ver el dashboard** (1 clic): github.com/PSR109/psr-legal → Settings → Pages → Source: Deploy from a branch → `main` / root → Save. El tablero queda en `https://psr109.github.io/psr-legal/dashboard/` | Dashboard en vivo con todo: utilidad, avances, portafolio, acciones — se actualiza solo con cada ciclo del agente | 🔶 Pages activo; despliegue en cola por incidencia de GitHub (2026-07-06) |
+| 7 | **Cuenta de afiliados de actividades (~10 min, gratis)**: registrarse en Viator (partnerresources.viator.com — sirve la cuenta Tripadvisor) y/o Civitatis (civitatis.com/es/afiliados/), y pasarle al agente el ID/enlace de afiliado | **LA ruta más corta al primer peso**: comisión de 8–12% por reserva de actividades desde Panoramas, sin necesidad de dominio propio ni AdSense | ⏳ pendiente — máxima prioridad monetaria |
+| 8 | **Analytics gratis para Panoramas** (1 clic, en el panel de Cloudflare que ya usas): Web Analytics → agregar sitio → copiar el snippet y dárselo al agente (o darle acceso al repo y lo hace él) | Sin medición no hay optimización: visitas, páginas top y fuentes para decidir con datos | ⏳ pendiente |
+| 9 | **Aprobar el segundo ciclo diario del agente** cuando aparezca el diálogo (el agente intentó crear la rutina de las 22:00 UTC y quedó esperando aprobación) | Duplica el trabajo compuesto diario (SEO, distribución, mejoras) a costo cero | ⏳ pendiente |
 
 ## Ideas en cartera
 
@@ -135,6 +145,7 @@ fragmentar el portafolio.
 | 2026-07-05 | Métrica norte "ingresos mensuales del portafolio" en la Misión + sección "💰 Ingresos" al tope del estado con la ruta más corta al primer peso + reporte diario que abre con el dinero | Directiva del dueño: el foco principal es la generación de dinero |
 | 2026-07-05 | Métrica norte refinada a **utilidad neta** (ingresos − costos) + "Regla de rentabilidad positiva" inviolable en la Misión (costos ≤ ingresos siempre; nunca gastar para crecer; migrar antes de pagar; app deficitaria 2 meses se archiva) + costos y utilidad en la tabla del estado | Directiva del dueño: generación de dinero con rentabilidad positiva siempre |
 | 2026-07-05 | **Dashboard en vivo** (`dashboard/index.html` + `datos.json`): utilidad neta, portafolio con % de avance, en curso ahora, ruta al primer peso, acciones humanas, historial, mejoras y gráfico de ingresos diarios. Actualizarlo es paso obligatorio de la Fase 7 | Directiva del dueño: ver y analizar en tiempo real todo — qué hay, qué se hace, % de avance, dinero generado |
+| 2026-07-06 | **Etapa 0 de monetización: afiliación** (Viator 8–12%, Civitatis 2–10%, Amazon para Sim Setups — sin dominio propio, validado con investigación) + regla "un activo de tráfico por ciclo" + regla de valor esperado ($ estimado/esfuerzo, auditable) + intento de 2º ciclo diario (pendiente de aprobación del dueño) | Análisis de optimización monetaria pedido por el dueño: maximizar generación de dinero |
 
 ## Lecciones aprendidas
 
