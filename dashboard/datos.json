@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-07-06T04:00:00Z",
+  "actualizado": "2026-07-06T04:30:00Z",
   "actualizado_por": "Sesión fundadora (pre-ciclo 1)",
   "metrica_norte": {
     "moneda": "USD",
@@ -8,15 +8,36 @@
     "utilidad_neta": 0
   },
   "en_curso_ahora": [
-    "Rutina diaria programada: primer ciclo automático 2026-07-06 ~12:00 UTC (~8:00 Chile)",
-    "Ciclo 1: verificación del portafolio, radar de oportunidades, auditoría de cuentas"
+    "Primer ciclo automático: 2026-07-06 ~12:00 UTC (~8:00 Chile)",
+    "Despliegue del dashboard en cola por incidencia transitoria de GitHub Pages",
+    "Nueva Etapa 0 de monetización descubierta: afiliación de actividades (Viator/Civitatis) — no requiere dominio propio"
   ],
   "ruta_primer_peso": [
-    { "paso": "Publicar Panoramas y Sim Setups", "responsable": "agente", "estado": "hecho" },
-    { "paso": "Subdominios en patagoniasimracing.cl (setups + panoramas)", "responsable": "humano", "estado": "pendiente" },
-    { "paso": "Cuenta Google AdSense con patagoniasimracing.cl como sitio", "responsable": "humano", "estado": "pendiente" },
-    { "paso": "Integrar bloques de anuncios en ambas apps", "responsable": "agente", "estado": "bloqueado (necesita acceso a repos + AdSense)" },
-    { "paso": "Primeras visitas → primer peso", "responsable": "agente (SEO + distribución)", "estado": "pendiente" }
+    {
+      "paso": "Publicar Panoramas y Sim Setups",
+      "responsable": "agente",
+      "estado": "hecho"
+    },
+    {
+      "paso": "🏁 VÍA RÁPIDA: cuenta de afiliados Viator/Civitatis (gratis, ~10 min, sin dominio propio)",
+      "responsable": "humano (acción #7)",
+      "estado": "pendiente"
+    },
+    {
+      "paso": "Integrar enlaces de afiliado en los panoramas (8–12% por reserva)",
+      "responsable": "agente",
+      "estado": "bloqueado (necesita acceso al repo + ID de afiliado)"
+    },
+    {
+      "paso": "Vía paralela: subdominios en patagoniasimracing.cl → AdSense → ads",
+      "responsable": "humano (#4, #5) + agente",
+      "estado": "pendiente"
+    },
+    {
+      "paso": "Tráfico: SEO + distribución (un activo por ciclo)",
+      "responsable": "agente",
+      "estado": "pendiente"
+    }
   ],
   "apps": [
     {
@@ -49,10 +70,48 @@
     }
   ],
   "acciones_humano": [
-    { "id": 1, "titulo": "Acceso del agente a los repos APP_Panoramas y patagonia-sim-setups", "desbloquea": "commits, migración de BD, integración de ads", "estado": "pendiente" },
-    { "id": 3, "titulo": "Abrir política de red del entorno (*.workers.dev, *.vercel.app, api.cloudflare.com, api.vercel.com)", "desbloquea": "monitoreo en vivo y automatización DNS", "estado": "pendiente" },
-    { "id": 4, "titulo": "Subdominios en patagoniasimracing.cl (~15 min, gratis)", "desbloquea": "TODOS los ingresos por ads", "estado": "pendiente" },
-    { "id": 5, "titulo": "Cuenta Google AdSense (tras #4)", "desbloquea": "primer peso", "estado": "bloqueada por #4" }
+    {
+      "id": 1,
+      "titulo": "Acceso del agente a los repos APP_Panoramas y patagonia-sim-setups",
+      "desbloquea": "integración de afiliados y ads, migración de BD",
+      "estado": "pendiente"
+    },
+    {
+      "id": 3,
+      "titulo": "Abrir política de red del entorno (*.workers.dev, *.vercel.app, api.cloudflare.com, api.vercel.com)",
+      "desbloquea": "monitoreo en vivo y automatización DNS",
+      "estado": "pendiente"
+    },
+    {
+      "id": 4,
+      "titulo": "Subdominios en patagoniasimracing.cl (~15 min, gratis)",
+      "desbloquea": "ads AdSense en ambas apps",
+      "estado": "pendiente"
+    },
+    {
+      "id": 5,
+      "titulo": "Cuenta Google AdSense (tras #4)",
+      "desbloquea": "ingresos por publicidad",
+      "estado": "bloqueada por #4"
+    },
+    {
+      "id": 7,
+      "titulo": "Cuenta de afiliados Viator y/o Civitatis (~10 min, gratis)",
+      "desbloquea": "LA ruta más corta al primer peso: 8–12% por reserva",
+      "estado": "pendiente — máxima prioridad"
+    },
+    {
+      "id": 8,
+      "titulo": "Cloudflare Web Analytics para Panoramas (1 clic)",
+      "desbloquea": "medición para optimizar con datos",
+      "estado": "pendiente"
+    },
+    {
+      "id": 9,
+      "titulo": "Aprobar el 2º ciclo diario del agente (22:00 UTC) cuando aparezca el diálogo",
+      "desbloquea": "el doble de trabajo compuesto por día",
+      "estado": "pendiente"
+    }
   ],
   "directivas": [
     "Mejora continua, máxima rentabilidad, sinergias, optimización de recursos",
@@ -63,18 +122,49 @@
   ],
   "ingresos_diarios": [],
   "historial_ciclos": [
-    { "fecha": "2026-07-05", "resumen": "Sesión fundadora: sistema del agente creado (manual, estado, rutina diaria, plantilla PWA, herramientas), Panoramas y Sim Setups auditadas e incorporadas con planes de lanzamiento, 3 nichos descartados con evidencia, atajo de subdominios descubierto, dashboard creado" }
+    {
+      "fecha": "2026-07-05",
+      "resumen": "Sesión fundadora: sistema del agente creado (manual, estado, rutina diaria, plantilla PWA, herramientas), Panoramas y Sim Setups auditadas e incorporadas con planes de lanzamiento, 3 nichos descartados con evidencia, atajo de subdominios descubierto, dashboard creado"
+    }
   ],
   "mejoras_sistema": [
-    { "fecha": "2026-07-05", "mejora": "Kaizen + rentabilidad + sinergias + plantilla base PWA" },
-    { "fecha": "2026-07-05", "mejora": "Caja de herramientas + verificar-sitios.sh" },
-    { "fecha": "2026-07-05", "mejora": "Oportunidad clara + radar en todos los ciclos" },
-    { "fecha": "2026-07-05", "mejora": "Métrica norte: utilidad neta con regla de rentabilidad positiva" },
-    { "fecha": "2026-07-05", "mejora": "Dashboard en tiempo real (este tablero)" }
+    {
+      "fecha": "2026-07-05",
+      "mejora": "Kaizen + rentabilidad + sinergias + plantilla base PWA"
+    },
+    {
+      "fecha": "2026-07-05",
+      "mejora": "Caja de herramientas + verificar-sitios.sh"
+    },
+    {
+      "fecha": "2026-07-05",
+      "mejora": "Oportunidad clara + radar en todos los ciclos"
+    },
+    {
+      "fecha": "2026-07-05",
+      "mejora": "Métrica norte: utilidad neta con regla de rentabilidad positiva"
+    },
+    {
+      "fecha": "2026-07-05",
+      "mejora": "Dashboard en tiempo real (este tablero)"
+    },
+    {
+      "fecha": "2026-07-06",
+      "mejora": "Etapa 0 afiliación + regla 'un activo de tráfico por ciclo' + regla de valor esperado"
+    }
   ],
   "herramientas": [
-    { "nombre": "verificar-sitios.sh", "uso": "chequeo diario de salud del portafolio" },
-    { "nombre": "plantilla pwa-base", "uso": "toda app nueva parte de aquí" },
-    { "nombre": "dashboard/datos.json", "uso": "fuente de datos de este tablero, actualizada cada ciclo" }
+    {
+      "nombre": "verificar-sitios.sh",
+      "uso": "chequeo diario de salud del portafolio"
+    },
+    {
+      "nombre": "plantilla pwa-base",
+      "uso": "toda app nueva parte de aquí"
+    },
+    {
+      "nombre": "dashboard/datos.json",
+      "uso": "fuente de datos de este tablero, actualizada cada ciclo"
+    }
   ]
 }

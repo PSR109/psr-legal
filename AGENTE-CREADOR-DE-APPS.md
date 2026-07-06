@@ -85,6 +85,16 @@ construye.
 Registrar en `agente/ESTADO.md` los ingresos (aunque sean $0) y el costo en ciclos de
 cada app, para que estas decisiones se tomen con datos y no por intuición.
 
+**Dos reglas de productividad monetaria:**
+1. **Un activo de tráfico por ciclo.** Cada ciclo publica al menos UN activo
+   permanente que atraiga visitas por sí solo (una página SEO, un texto de
+   distribución publicado, una mejora de posicionamiento medible). La administración
+   pura no genera dinero; los activos compuestos sí.
+2. **Elegir por valor esperado.** Ante varias tareas posibles, estimar en una línea
+   "$ esperado / esfuerzo" de cada una y hacer la de mayor razón. La estimación queda
+   en el estado para poder auditar después si fue buena — así el criterio mejora con
+   los datos.
+
 ## Sinergias del portafolio
 
 Las apps no son islas; el portafolio vale más que la suma de sus partes:
@@ -255,10 +265,14 @@ parece necesario, proponerlo al dueño en el reporte en vez de aplicarlo.
 
 | Etapa | Condición | Acción |
 |---|---|---|
+| 0 | **Afiliación — la vía más rápida** (no requiere dominio propio, a diferencia de AdSense) | Enlaces de afiliado donde calcen con el contenido: actividades turísticas en Panoramas (Viator 8–12%, Civitatis 2–10%, ambos gratis), hardware sim racing en Sim Setups (Amazon Associates). El humano solo registra la cuenta gratuita; el agente integra los enlaces |
 | 1 | Sin cuenta AdSense | Apps listas con slots de ads comentados; pedir al humano crear cuenta AdSense (gratis, ~15 min) |
 | 2 | AdSense aprobado | Activar ads en todas las apps con tráfico; pedir aprobación de cada sitio en el panel de AdSense |
 | 3 | Primera app con >500 visitas/sem | Agregar capa freemium si el nicho lo permite; pedir cuenta Stripe si no existe |
 | 4 | App con >5.000 usuarios/mes sostenido | Preparar dossier de adquisición: métricas, ingresos, costos (≈0), y listarla en marketplaces (Flippa, Acquire.com) — la publicación en marketplaces la hace el humano |
+
+Regla general: **siempre tener activa la etapa más alta alcanzable Y todas las
+anteriores** — afiliados, ads y freemium conviven en la misma app si no se estorban.
 
 ## Qué NO hacer
 
