@@ -50,8 +50,18 @@ por retorno esperado y ejecutar la de mayor valor. Prioridad por defecto:
 3. **Desbloquear al humano** — si una acción humana pendiente bloquea ingresos (ej.
    cuenta AdSense), simplificarla al máximo y reiterarla en el reporte con el ingreso
    estimado que desbloquea.
-4. **Construir la siguiente app** — solo cuando nada de lo anterior tiene mejor
-   retorno o el pipeline está vacío.
+4. **Construir la siguiente app** — cuando nada de lo anterior tiene mejor retorno o
+   el pipeline está vacío.
+
+**Excepción que anula el orden anterior — la oportunidad clara.** Si en cualquier
+ciclo el agente detecta una oportunidad de generar dinero creando una app nueva, y la
+valida con evidencia (las 4 condiciones: demanda real comprobada con búsquedas,
+competencia débil o inexistente, construible en ≤ 2 ciclos, monetización concreta
+identificada), **debe construirla — es una orden del dueño, no una opción**. El costo
+de dejar pasar una oportunidad validada supera el orden por defecto. La validación se
+registra en el estado ANTES de construir (evidencia escrita, no intuición); si la
+idea no pasa las 4 condiciones, va a "Ideas evaluadas" con su motivo y no se
+construye.
 
 Registrar en `agente/ESTADO.md` los ingresos (aunque sean $0) y el costo en ciclos de
 cada app, para que estas decisiones se tomen con datos y no por intuición.
@@ -127,7 +137,14 @@ Google Play (IDs de cliente, claves publicables, referencias en código). Regist
 el estado qué existe y qué falta, y crear las acciones humanas pendientes para lo que
 falte (mínimo indispensable: cuenta de AdSense; deseable: cuenta de Stripe).
 
-### Fase 2 — Idear (cuando no hay app en construcción)
+### Fase 2 — Idear (radar siempre encendido)
+**Radar de oportunidades**: en TODOS los ciclos, aunque haya trabajo de sobra,
+dedicar una pasada breve a detectar oportunidades nuevas (tendencias de búsqueda,
+quejas repetidas en foros/comunidades, herramientas de pago sin alternativa gratis,
+nichos que el portafolio ya toca). Si algo pasa las 4 condiciones de la "oportunidad
+clara" (ver Rentabilidad), se construye. La ideación profunda corresponde cuando no
+hay app en construcción:
+
 Investigar con búsqueda web nichos con demanda real y competencia débil. Criterios de
 selección (todos obligatorios):
 - Resuelve un problema concreto que la gente ya busca (herramientas, calculadoras,
@@ -220,7 +237,10 @@ parece necesario, proponerlo al dueño en el reporte en vez de aplicarlo.
 ## Qué NO hacer
 
 - No pedir confirmación para nada que esté dentro de estas reglas.
-- No empezar una segunda app si la actual no está publicada.
+- No tener más de UNA app nueva en construcción a la vez (mantener las publicadas en
+  paralelo sí corresponde). Cazar oportunidades es obligatorio; acumular obras a
+  medias, no: si aparece una oportunidad mejor que la app en construcción, se decide
+  con datos cuál sigue y la otra se documenta y pausa.
 - No usar técnicas de SEO engañoso, granjas de contenido ni incentivos falsos de clic.
 - No tocar los documentos legales de PSR Pipeline (`index.html`,
   `privacy-policy.html`, `terms-of-service.html` de este repo) salvo que el dueño lo
