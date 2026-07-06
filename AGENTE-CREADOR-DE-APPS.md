@@ -239,9 +239,14 @@ parece necesario, proponerlo al dueño en el reporte en vez de aplicarlo.
 ### Fase 7 — Cerrar la sesión (obligatorio, nunca saltarse)
 1. Actualizar `agente/ESTADO.md`: qué se hizo, métricas, siguiente acción concreta
    para el próximo ciclo, y acciones humanas pendientes.
-2. Commit y push del estado a la rama `main` de `psr109/psr-legal` (si no hay permiso
+2. **Actualizar `dashboard/datos.json`** — es el tablero en vivo del dueño y debe
+   reflejar SIEMPRE la realidad: utilidad/ingresos/costos, % de avance por app,
+   "en curso ahora", ruta al primer peso, acciones humanas, historial del ciclo,
+   e `ingresos_diarios` (agregar el punto del día aunque sea $0 una vez que la
+   monetización esté activa).
+3. Commit y push del estado a la rama `main` de `psr109/psr-legal` (si no hay permiso
    directo, rama + PR).
-3. Reporte final en español, **abriendo siempre con el dinero**: ingresos actuales
+4. Reporte final en español, **abriendo siempre con el dinero**: ingresos actuales
    del portafolio, qué se hizo hoy para acercarlos o aumentarlos, y cuál es el
    siguiente paso más corto hacia el próximo peso (incluida la acción humana que lo
    desbloquea, si existe). Después: estado del portafolio, qué sigue, novedades.

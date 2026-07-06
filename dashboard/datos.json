@@ -1,0 +1,80 @@
+{
+  "actualizado": "2026-07-05T23:59:00Z",
+  "actualizado_por": "Sesión fundadora (pre-ciclo 1)",
+  "metrica_norte": {
+    "moneda": "USD",
+    "ingresos_mes": 0,
+    "costos_mes": 0,
+    "utilidad_neta": 0
+  },
+  "en_curso_ahora": [
+    "Rutina diaria programada: primer ciclo automático 2026-07-06 ~12:00 UTC (~8:00 Chile)",
+    "Ciclo 1: verificación del portafolio, radar de oportunidades, auditoría de cuentas"
+  ],
+  "ruta_primer_peso": [
+    { "paso": "Publicar Panoramas y Sim Setups", "responsable": "agente", "estado": "hecho" },
+    { "paso": "Subdominios en patagoniasimracing.cl (setups + panoramas)", "responsable": "humano", "estado": "pendiente" },
+    { "paso": "Cuenta Google AdSense con patagoniasimracing.cl como sitio", "responsable": "humano", "estado": "pendiente" },
+    { "paso": "Integrar bloques de anuncios en ambas apps", "responsable": "agente", "estado": "bloqueado (necesita acceso a repos + AdSense)" },
+    { "paso": "Primeras visitas → primer peso", "responsable": "agente (SEO + distribución)", "estado": "pendiente" }
+  ],
+  "apps": [
+    {
+      "nombre": "Panoramas",
+      "etiqueta": "insignia Chile",
+      "url": "https://panoramas.contacto-d1f.workers.dev/",
+      "repo": "https://github.com/PSR109/APP_Panoramas",
+      "estado": "Publicada",
+      "avance_pct": 75,
+      "avance_detalle": "Publicada y funcional. Falta: subdominio propio, AdSense, verificación en vivo (red del entorno bloqueada), distribución",
+      "modelo": "Ads + freemium",
+      "criterio_exito": "100 visitas orgánicas/semana a 30 días del subdominio",
+      "metrica_actual": "sin medición aún",
+      "ingresos_mes": 0,
+      "costos_mes": 0
+    },
+    {
+      "nombre": "Sim Setups",
+      "etiqueta": "insignia global",
+      "url": "https://patagonia-sim-setups.vercel.app/",
+      "repo": "https://github.com/PSR109/patagonia-sim-setups",
+      "estado": "Publicada — riesgo técnico",
+      "avance_pct": 60,
+      "avance_detalle": "Publicada. Falta: migrar SQLite→BD gestionada (crítico: hoy pierde usuarios en cada deploy), subdominio, AdSense, inglés por defecto, páginas SEO",
+      "modelo": "Ads + freemium PSR Pro",
+      "criterio_exito": "definir tras migración de BD",
+      "metrica_actual": "sin medición aún",
+      "ingresos_mes": 0,
+      "costos_mes": 0
+    }
+  ],
+  "acciones_humano": [
+    { "id": 1, "titulo": "Acceso del agente a los repos APP_Panoramas y patagonia-sim-setups", "desbloquea": "commits, migración de BD, integración de ads", "estado": "pendiente" },
+    { "id": 3, "titulo": "Abrir política de red del entorno (*.workers.dev, *.vercel.app, api.cloudflare.com, api.vercel.com)", "desbloquea": "monitoreo en vivo y automatización DNS", "estado": "pendiente" },
+    { "id": 4, "titulo": "Subdominios en patagoniasimracing.cl (~15 min, gratis)", "desbloquea": "TODOS los ingresos por ads", "estado": "pendiente" },
+    { "id": 5, "titulo": "Cuenta Google AdSense (tras #4)", "desbloquea": "primer peso", "estado": "bloqueada por #4" }
+  ],
+  "directivas": [
+    "Mejora continua, máxima rentabilidad, sinergias, optimización de recursos",
+    "Usar, buscar, instalar o crear herramientas que lo hagan más capaz cada día",
+    "Cazar oportunidades: construir apps nuevas ante opciones validadas de ingresos",
+    "Foco principal: generación de dinero",
+    "Rentabilidad positiva SIEMPRE (costos ≤ ingresos)"
+  ],
+  "ingresos_diarios": [],
+  "historial_ciclos": [
+    { "fecha": "2026-07-05", "resumen": "Sesión fundadora: sistema del agente creado (manual, estado, rutina diaria, plantilla PWA, herramientas), Panoramas y Sim Setups auditadas e incorporadas con planes de lanzamiento, 3 nichos descartados con evidencia, atajo de subdominios descubierto, dashboard creado" }
+  ],
+  "mejoras_sistema": [
+    { "fecha": "2026-07-05", "mejora": "Kaizen + rentabilidad + sinergias + plantilla base PWA" },
+    { "fecha": "2026-07-05", "mejora": "Caja de herramientas + verificar-sitios.sh" },
+    { "fecha": "2026-07-05", "mejora": "Oportunidad clara + radar en todos los ciclos" },
+    { "fecha": "2026-07-05", "mejora": "Métrica norte: utilidad neta con regla de rentabilidad positiva" },
+    { "fecha": "2026-07-05", "mejora": "Dashboard en tiempo real (este tablero)" }
+  ],
+  "herramientas": [
+    { "nombre": "verificar-sitios.sh", "uso": "chequeo diario de salud del portafolio" },
+    { "nombre": "plantilla pwa-base", "uso": "toda app nueva parte de aquí" },
+    { "nombre": "dashboard/datos.json", "uso": "fuente de datos de este tablero, actualizada cada ciclo" }
+  ]
+}
