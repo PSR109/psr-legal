@@ -1,3 +1,5 @@
 # Sitios del portafolio: NOMBRE URL (una línea por sitio, # comenta)
 panoramas https://panoramas.contacto-d1f.workers.dev/
 sim-setups https://patagonia-sim-setups.vercel.app/
+guias-chile https://psr109.github.io/psr-legal/guias/
+dashboard https://psr109.github.io/psr-legal/dashboard/

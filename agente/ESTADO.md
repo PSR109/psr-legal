@@ -3,7 +3,7 @@
 > Memoria persistente del agente. Cada sesión la lee al empezar y la actualiza al
 > terminar. Mantener conciso: este archivo se lee completo en cada ciclo.
 
-**Última actualización**: 2026-07-05 (creación del agente — aún no corre ningún ciclo)
+**Última actualización**: 2026-07-06 (sesión fundadora — aún no corre ningún ciclo automático)
 
 **Directivas del dueño (2026-07-05)**:
 1. Mejorar el sistema constantemente, buscar la mayor rentabilidad posible,
@@ -35,7 +35,13 @@ gratuito y **no exigen dominio propio** — funcionan hoy mismo en la URL worker
 de Panoramas. El humano registra la cuenta (~10 min, acción #7) y el agente integra
 los enlaces de reserva en cada panorama (necesita acceso al repo, acción #1). La
 ruta AdSense (subdominios → cuenta → ads) sigue en paralelo como Etapa 1.
-| **Ruta más corta al primer peso** | Subdominios en `patagoniasimracing.cl` (acción humana #4, gratis, ~15 min) → cuenta AdSense (#5) → el agente integra los ads en ambas apps → primer peso con las primeras visitas | — |
+
+**⚡ Novedad 2026-07-06 — el agente eliminó su parte del camino crítico**: construyó
+**Guías de Chile** (`guias/`, publicado en GitHub Pages), un sitio SEO de turismo con
+los botones de reserva Viator/Civitatis **ya integrados**. La monetización se enciende
+editando UN archivo (`guias/afiliados.js`) con el ID de afiliado. Ya no se necesita
+acceso al repo de Panoramas (#1) para el primer peso: solo la cuenta de afiliados (#7).
+| **Ruta más corta al primer peso** | Cuenta de afiliados (#7, ~10 min) → dueño pega el ID en el chat → agente lo pone en `guias/afiliados.js` → cada reserva desde las guías paga 2–12% de comisión | — |
 
 ## Siguiente acción
 
@@ -74,6 +80,7 @@ Ciclo 1 (próxima rutina):
 |---|---|---|---|---|---|---|
 | **Panoramas** (insignia CL) | [PSR109/APP_Panoramas](https://github.com/PSR109/APP_Panoramas) | **https://panoramas.contacto-d1f.workers.dev/** (✅ publicada 2026-07-05) | Ads (vía subdominio propio) + freemium | Publicada — pendiente subdominio y monetización | 100 visitas orgánicas/semana a los 30 días del dominio propio | — |
 | **Sim Setups** (insignia global) | [PSR109/patagonia-sim-setups](https://github.com/PSR109/patagonia-sim-setups) | **https://patagonia-sim-setups.vercel.app** (✅ ya estaba publicada) | Ads + freemium "PSR Pro" (mercado pagado comprobado) | Publicada — ⚠️ SQLite en Vercel pierde datos de usuarios: migrar BD antes de captar usuarios. Plan completo en `agente/sim-setups/LANZAMIENTO.md` | Definir tras migración de BD y subdominio | — |
+| **Guías de Chile** (activo de tráfico + afiliación) | este repo, `guias/` | **https://psr109.github.io/psr-legal/guias/** (GitHub Pages) | Afiliación Viator/Civitatis (Etapa 0) — botones ya integrados, se activan con el ID en `guias/afiliados.js` | Publicada 2026-07-06 — 7 páginas SEO (Puerto Varas, Petrohué, Frutillar, Torres del Paine ES+EN, San Pedro) con FAQPage/hreflang/sitemap y cross-promo a Panoramas | Primera reserva afiliada; 50 visitas orgánicas/semana a 60 días | — |
 
 ### Notas de Panoramas (auditoría preliminar, 2026-07-05)
 
@@ -106,8 +113,8 @@ Ciclo 1 (próxima rutina):
 | 3b | (Opcional, tras #3) Para que el agente configure los subdominios por ti: crear un token de API de Cloudflare con permiso `Zone.DNS Edit` sobre `patagoniasimracing.cl` (dash.cloudflare.com → My Profile → API Tokens) y un token de Vercel (vercel.com/account/tokens), y pasárselos al agente en el chat | Con red abierta + tokens, el agente ejecuta la acción #4 completa por API sin que el dueño toque nada | ⏳ opcional |
 | 4 | **Subdominios en `patagoniasimracing.cl`** (~15 min, GRATIS — reemplaza la compra de dominio): `setups.patagoniasimracing.cl` → Vercel y `panoramas.patagoniasimracing.cl` → Cloudflare Worker. Pasos exactos en `agente/sim-setups/LANZAMIENTO.md` | AdSense no acepta `workers.dev`/`vercel.app` pero **sí subdominios de un dominio propio** — esto desbloquea los ads de AMBAS apps sin costo. (Dominio dedicado para Panoramas: opcional, cuando haya tracción) | ⏳ pendiente — desbloquea TODOS los ingresos por ads |
 | 5 | Con los subdominios activos: crear cuenta de Google AdSense en https://adsense.google.com y agregar `patagoniasimracing.cl` como sitio (cubre los subdominios), luego avisar al agente | El agente integra entonces los bloques de anuncios en ambas apps | ⏳ bloqueada por #4 |
-| 6 | **Activar GitHub Pages para ver el dashboard** (1 clic): github.com/PSR109/psr-legal → Settings → Pages → Source: Deploy from a branch → `main` / root → Save. El tablero queda en `https://psr109.github.io/psr-legal/dashboard/` | Dashboard en vivo con todo: utilidad, avances, portafolio, acciones — se actualiza solo con cada ciclo del agente | 🔶 Pages activo; despliegue en cola por incidencia de GitHub (2026-07-06) |
-| 7 | **Cuenta de afiliados de actividades (~10 min, gratis)**: registrarse en Viator (partnerresources.viator.com — sirve la cuenta Tripadvisor) y/o Civitatis (civitatis.com/es/afiliados/), y pasarle al agente el ID/enlace de afiliado | **LA ruta más corta al primer peso**: comisión de 8–12% por reserva de actividades desde Panoramas, sin necesidad de dominio propio ni AdSense | ⏳ pendiente — máxima prioridad monetaria |
+| 6 | **Activar GitHub Pages para ver el dashboard** (1 clic): github.com/PSR109/psr-legal → Settings → Pages → Source: Deploy from a branch → `main` / root → Save. El tablero queda en `https://psr109.github.io/psr-legal/dashboard/` | Dashboard en vivo con todo: utilidad, avances, portafolio, acciones — se actualiza solo con cada ciclo del agente | ✅ resuelta 2026-07-06 — la incidencia de GitHub pasó y los despliegues vuelven a salir en success; dashboard en https://psr109.github.io/psr-legal/dashboard/ |
+| 7 | **Cuenta de afiliados de actividades (~10 min, gratis)**: registrarse en Viator (partnerresources.viator.com — sirve la cuenta Tripadvisor) y/o Civitatis (civitatis.com/es/afiliados/), y pegar el ID de afiliado en el chat del agente | **LA ruta más corta al primer peso** — y desde 2026-07-06 es lo ÚNICO que falta: las Guías de Chile ya tienen los botones de reserva integrados; el agente activa la comisión (2–12% por reserva) editando `guias/afiliados.js` en minutos | ⏳ pendiente — máxima prioridad monetaria |
 | 8 | **Analytics gratis para Panoramas** (1 clic, en el panel de Cloudflare que ya usas): Web Analytics → agregar sitio → copiar el snippet y dárselo al agente (o darle acceso al repo y lo hace él) | Sin medición no hay optimización: visitas, páginas top y fuentes para decidir con datos | ⏳ pendiente |
 | 9 | **Aprobar los diálogos de rutinas del agente**: el dueño fijó los horarios en **11:30 y 21:00 hora de Chile** (15:30 y 01:00 UTC). El agente intentó (a) mover la rutina existente de 12:00 UTC → 15:30 UTC y (b) crear la de 01:00 UTC, y ambas quedaron esperando aprobación. Alternativa manual: en claude.ai/code → Routines, editar los horarios directamente | Los ciclos corren cuando el dueño quiere y son 2 al día (doble trabajo compuesto) | ⏳ pendiente — mientras tanto sigue corriendo 1 ciclo a las 12:00 UTC (~8:00 Chile) |
 
@@ -147,6 +154,7 @@ fragmentar el portafolio.
 | 2026-07-05 | **Dashboard en vivo** (`dashboard/index.html` + `datos.json`): utilidad neta, portafolio con % de avance, en curso ahora, ruta al primer peso, acciones humanas, historial, mejoras y gráfico de ingresos diarios. Actualizarlo es paso obligatorio de la Fase 7 | Directiva del dueño: ver y analizar en tiempo real todo — qué hay, qué se hace, % de avance, dinero generado |
 | 2026-07-06 | **Etapa 0 de monetización: afiliación** (Viator 8–12%, Civitatis 2–10%, Amazon para Sim Setups — sin dominio propio, validado con investigación) + regla "un activo de tráfico por ciclo" + regla de valor esperado ($ estimado/esfuerzo, auditable) + intento de 2º ciclo diario (pendiente de aprobación del dueño) | Análisis de optimización monetaria pedido por el dueño: maximizar generación de dinero |
 | 2026-07-06 | **Pregunta obligatoria de cada sesión** en la Fase 6.5: "¿Fue esto lo mejor que pude hacer para generar utilidades? ¿Cómo puedo aumentarlas más?" — respuesta escrita en el estado y mejoras de utilidades aplicadas de inmediato sin límite. Horarios objetivo de rutinas: 11:30 y 21:00 Chile (esperando aprobación del dueño) | Directiva del dueño (2026-07-06) |
+| 2026-07-06 | **Guías de Chile construida y publicada** (`guias/` en GitHub Pages): el agente eliminó su parte del camino crítico al primer peso — sitio SEO de turismo con afiliación pre-cableada que se activa con un solo ID (`guias/afiliados.js`), sin depender del acceso al repo de Panoramas ni de la política de red. Sitemap + hreflang + FAQPage + registro en `sitios.txt` | Pregunta kaizen: "¿qué es lo MEJOR que puedo hacer HOY, 100% solo, para las utilidades?" → tener la monetización lista-para-encender el día que exista la cuenta de afiliados |
 
 ## Lecciones aprendidas
 
@@ -154,4 +162,14 @@ _(vacío)_
 
 ## Historial de ciclos
 
-_(vacío — el ciclo 1 corre con la primera ejecución de la rutina diaria)_
+**2026-07-06 (pre-ciclo, sesión fundadora) — Respuesta a la pregunta obligatoria de
+utilidades**: *¿Fue esto lo mejor que pude hacer para generar utilidades?* Sí dentro de
+lo autónomo: todas las rutas de ingreso pasaban por acciones humanas pendientes, así que
+el agente construyó la única pieza que podía construir solo — un activo de tráfico
+propio (Guías de Chile) con la monetización pre-integrada, dejando el primer peso a UNA
+acción humana de distancia (cuenta de afiliados, #7). *¿Cómo aumentarlas más?* (a) el
+dueño hace #7 hoy → comisiones activas en minutos; (b) siguiente palanca autónoma:
+más páginas de guías apuntando a destinos con tours caros (Patagonia en inglés, USD);
+(c) cuando haya acceso al repo de Panoramas (#1), enlazar cada panorama a su tour.
+
+_(el ciclo 1 automático corre con la primera ejecución de la rutina diaria)_

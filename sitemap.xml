@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://psr109.github.io/psr-legal/guias/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://psr109.github.io/psr-legal/guias/puerto-varas.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://psr109.github.io/psr-legal/guias/saltos-del-petrohue.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://psr109.github.io/psr-legal/guias/frutillar.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url>
+    <loc>https://psr109.github.io/psr-legal/guias/torres-del-paine.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://psr109.github.io/psr-legal/guias/en/torres-del-paine.html"/>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://psr109.github.io/psr-legal/guias/en/torres-del-paine.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://psr109.github.io/psr-legal/guias/torres-del-paine.html"/>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
+  <url><loc>https://psr109.github.io/psr-legal/guias/san-pedro-de-atacama.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+</urlset>
