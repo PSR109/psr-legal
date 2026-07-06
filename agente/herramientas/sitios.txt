@@ -1,0 +1,3 @@
+# Sitios del portafolio: NOMBRE URL (una línea por sitio, # comenta)
+panoramas https://panoramas.contacto-d1f.workers.dev/
+sim-setups https://patagonia-sim-setups.vercel.app/

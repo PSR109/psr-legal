@@ -75,6 +75,44 @@ Las apps no son islas; el portafolio vale más que la suma de sus partes:
   funcionó, qué keywords rinden) se registran en el estado como reglas generales, no
   como notas sueltas de esa app.
 
+## Caja de herramientas
+
+El agente debe usar TODO su arsenal, no solo leer y escribir archivos:
+
+**Herramientas de sesión (usarlas activamente):**
+- **Búsqueda e investigación**: `WebSearch`/`WebFetch` para validar nichos, espiar
+  competencia y verificar sitios; `ToolSearch` para descubrir herramientas diferidas
+  disponibles en la sesión antes de asumir que algo no se puede.
+- **GitHub MCP** (`mcp__github__*`): repos, PRs, issues, releases — todo lo de GitHub
+  se hace con estas herramientas.
+- **Subagentes** (`Agent`): delegar búsquedas amplias o tareas paralelas
+  independientes en vez de hacerlas en serie.
+- **Workflows multi-agente** (`Workflow`): para barridos grandes (auditar muchos
+  archivos, generar muchas páginas SEO, verificar muchos hallazgos) cuando el dueño
+  lo haya habilitado.
+- **Skills disponibles**: revisar la lista de skills de la sesión (p. ej.
+  `deep-research` para investigación profunda de un nicho) antes de improvisar el
+  procedimiento a mano.
+
+**Herramientas propias (`agente/herramientas/`):**
+- Regla: **si haces algo manual dos veces, la tercera es un script**. Los scripts
+  viven en `agente/herramientas/`, se registran en su `README.md` con una línea de
+  uso, y se mejoran en vez de duplicarse.
+- Ejemplos esperados: verificación de sitios del portafolio, chequeos de SEO,
+  generación de reportes, scraping de métricas públicas.
+
+**Adquirir herramientas nuevas (parte del kaizen, Fase 6.5):**
+- Buscar antes de construir: `SearchMcpRegistry` (servidores MCP), `SearchPlugins`
+  (plugins), `SearchSkills` (skills) — puede existir ya lo que falta.
+- Criterio de adopción: si es gratis, local y sin credenciales → adoptarlo, dejarlo
+  configurado (`.claude/`, `.mcp.json` del repo cuando aplique) y documentarlo en
+  el estado. Si requiere cuentas, pagos o permisos del entorno → proponerlo al dueño
+  como acción humana con el beneficio concreto que desbloquea.
+- Crear skills propias: cuando un procedimiento del agente se estabilice (p. ej.
+  "lanzar una app nueva", "integrar AdSense"), codificarlo como skill del proyecto en
+  `.claude/skills/<nombre>/SKILL.md` para que cada sesión futura lo ejecute igual y
+  mejor.
+
 ## Ciclo de trabajo (ejecutar UNA pasada por sesión)
 
 ### Fase 0 — Cargar estado
@@ -152,9 +190,12 @@ preguntas:
 2. ¿Qué aprendí que sirve para todas las apps y aún no está en la plantilla base ni en
    este manual?
 3. ¿Qué regla o fase de este manual está mal calibrada según los datos reales?
+4. ¿Qué herramienta me faltó este ciclo? Buscarla (`SearchMcpRegistry`,
+   `SearchPlugins`, `SearchSkills`), crearla (`agente/herramientas/`, skills del
+   proyecto) o proponerla al dueño si requiere cuentas/permisos.
 
 Aplicar **una mejora concreta por ciclo** como máximo: editar este manual, mejorar la
-plantilla base, o reestructurar el estado. Registrar cada mejora en la sección
+plantilla base, reestructurar el estado, o incorporar/crear una herramienta. Registrar cada mejora en la sección
 "Mejoras del sistema" de `agente/ESTADO.md` con una línea de justificación. Las
 "Reglas de autonomía" son inmutables y no se tocan. Si un cambio de reglas inmutables
 parece necesario, proponerlo al dueño en el reporte en vez de aplicarlo.
