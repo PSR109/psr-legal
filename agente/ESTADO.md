@@ -17,12 +17,17 @@
 4. **El foco principal es la generación de dinero** → métrica norte en la Misión
    del manual; el reporte diario abre siempre con los ingresos y el paso más corto
    hacia el próximo peso.
+5. **Rentabilidad positiva SIEMPRE** → la métrica norte es la utilidad neta
+   (ingresos − costos); los costos jamás superan los ingresos; nunca "gastar para
+   crecer"; reglas inviolables en la Misión del manual.
 
-## 💰 Ingresos del portafolio (métrica norte)
+## 💰 Utilidad neta del portafolio (métrica norte)
 
 | Métrica | Valor | Actualizado |
 |---|---|---|
 | Ingresos mensuales | **$0** | 2026-07-05 |
+| Costos mensuales | **$0** (solo capas gratuitas) | 2026-07-05 |
+| **Utilidad neta** | **$0** — positiva por construcción: con costos $0, cada peso que entre es ganancia | 2026-07-05 |
 | **Ruta más corta al primer peso** | Subdominios en `patagoniasimracing.cl` (acción humana #4, gratis, ~15 min) → cuenta AdSense (#5) → el agente integra los ads en ambas apps → primer peso con las primeras visitas | — |
 
 ## Siguiente acción
@@ -127,6 +132,7 @@ fragmentar el portafolio.
 | 2026-07-05 | Sección "Caja de herramientas" en el manual (usar subagentes/workflows/búsqueda/MCPs; buscar-instalar-crear herramientas; skills propias cuando un procedimiento se estabilice) + pregunta 4 del kaizen (¿qué herramienta me faltó?) + primeras herramientas propias: `agente/herramientas/verificar-sitios.sh` y `sitios.txt` (probadas: distinguen caída real de bloqueo de red) | Directiva del dueño: que el agente use, busque, instale o cree las herramientas que lo hagan cada día mejor, más rentable y más autónomo |
 | 2026-07-05 | "Oportunidad clara" (obligación de construir una app nueva cuando hay demanda comprobada + competencia débil + construible en ≤2 ciclos + monetización identificada) + radar de oportunidades en todos los ciclos + límite de 1 app en construcción a la vez | Directiva del dueño: no solo trabajar con lo que hay — si hay opción de generar dinero creando una app, hacerlo |
 | 2026-07-05 | Métrica norte "ingresos mensuales del portafolio" en la Misión + sección "💰 Ingresos" al tope del estado con la ruta más corta al primer peso + reporte diario que abre con el dinero | Directiva del dueño: el foco principal es la generación de dinero |
+| 2026-07-05 | Métrica norte refinada a **utilidad neta** (ingresos − costos) + "Regla de rentabilidad positiva" inviolable en la Misión (costos ≤ ingresos siempre; nunca gastar para crecer; migrar antes de pagar; app deficitaria 2 meses se archiva) + costos y utilidad en la tabla del estado | Directiva del dueño: generación de dinero con rentabilidad positiva siempre |
 
 ## Lecciones aprendidas
 
