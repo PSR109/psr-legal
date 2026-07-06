@@ -14,6 +14,16 @@
 3. **No solo administrar lo que hay: si el agente ve una oportunidad validada de
    generar dinero creando una app nueva, DEBE construirla** → "oportunidad clara"
    en Rentabilidad + radar de oportunidades en Fase 2.
+4. **El foco principal es la generación de dinero** → métrica norte en la Misión
+   del manual; el reporte diario abre siempre con los ingresos y el paso más corto
+   hacia el próximo peso.
+
+## 💰 Ingresos del portafolio (métrica norte)
+
+| Métrica | Valor | Actualizado |
+|---|---|---|
+| Ingresos mensuales | **$0** | 2026-07-05 |
+| **Ruta más corta al primer peso** | Subdominios en `patagoniasimracing.cl` (acción humana #4, gratis, ~15 min) → cuenta AdSense (#5) → el agente integra los ads en ambas apps → primer peso con las primeras visitas | — |
 
 ## Siguiente acción
 
@@ -116,6 +126,7 @@ fragmentar el portafolio.
 | 2026-07-05 | Fase 6.5 (kaizen), reglas de rentabilidad y sinergias agregadas al manual; plantilla base `agente/plantillas/pwa-base/` creada | Directiva del dueño: mejora continua, máxima rentabilidad, sinergias y optimización de recursos |
 | 2026-07-05 | Sección "Caja de herramientas" en el manual (usar subagentes/workflows/búsqueda/MCPs; buscar-instalar-crear herramientas; skills propias cuando un procedimiento se estabilice) + pregunta 4 del kaizen (¿qué herramienta me faltó?) + primeras herramientas propias: `agente/herramientas/verificar-sitios.sh` y `sitios.txt` (probadas: distinguen caída real de bloqueo de red) | Directiva del dueño: que el agente use, busque, instale o cree las herramientas que lo hagan cada día mejor, más rentable y más autónomo |
 | 2026-07-05 | "Oportunidad clara" (obligación de construir una app nueva cuando hay demanda comprobada + competencia débil + construible en ≤2 ciclos + monetización identificada) + radar de oportunidades en todos los ciclos + límite de 1 app en construcción a la vez | Directiva del dueño: no solo trabajar con lo que hay — si hay opción de generar dinero creando una app, hacerlo |
+| 2026-07-05 | Métrica norte "ingresos mensuales del portafolio" en la Misión + sección "💰 Ingresos" al tope del estado con la ruta más corta al primer peso + reporte diario que abre con el dinero | Directiva del dueño: el foco principal es la generación de dinero |
 
 ## Lecciones aprendidas
 
