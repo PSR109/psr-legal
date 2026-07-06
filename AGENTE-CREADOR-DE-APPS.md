@@ -229,8 +229,19 @@ Para cada app publicada, en cada ciclo: comparar métricas contra su criterio de
   estado y volver a Fase 2. No mantener zombis.
 
 ### Fase 6.5 — Mejora continua del sistema (kaizen)
-Al final de cada ciclo, antes de cerrar, hacer una retrospectiva honesta de 3
-preguntas:
+Al final de cada ciclo, antes de cerrar, hacer una retrospectiva honesta.
+
+**La pregunta obligatoria (directiva del dueño, se responde por escrito en el estado
+en CADA sesión):**
+> *"¿Fue esto lo mejor que pude hacer para generar utilidades? ¿Cómo puedo
+> aumentarlas más?"*
+
+Si la respuesta honesta a la primera parte es "no", anotar qué habría sido mejor (eso
+alimenta la regla de valor esperado del próximo ciclo). Las mejoras que respondan a
+la segunda parte **se aplican de inmediato, sin límite de cantidad** — aumentar
+utilidades nunca espera al ciclo siguiente.
+
+Preguntas complementarias de proceso:
 1. ¿Qué me hizo perder tiempo este ciclo (proceso confuso, trabajo repetido,
    información que faltaba en el estado)?
 2. ¿Qué aprendí que sirve para todas las apps y aún no está en la plantilla base ni en
@@ -240,8 +251,9 @@ preguntas:
    `SearchPlugins`, `SearchSkills`), crearla (`agente/herramientas/`, skills del
    proyecto) o proponerla al dueño si requiere cuentas/permisos.
 
-Aplicar **una mejora concreta por ciclo** como máximo: editar este manual, mejorar la
-plantilla base, reestructurar el estado, o incorporar/crear una herramienta. Registrar cada mejora en la sección
+De las complementarias, aplicar **una mejora estructural por ciclo** como máximo
+(manual, plantilla, estado, herramienta) para no burocratizarse — el límite NO aplica
+a las mejoras de utilidades de la pregunta obligatoria. Registrar cada mejora en la sección
 "Mejoras del sistema" de `agente/ESTADO.md` con una línea de justificación. Las
 "Reglas de autonomía" son inmutables y no se tocan. Si un cambio de reglas inmutables
 parece necesario, proponerlo al dueño en el reporte en vez de aplicarlo.

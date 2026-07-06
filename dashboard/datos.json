@@ -1,5 +1,5 @@
 {
-  "actualizado": "2026-07-06T04:30:00Z",
+  "actualizado": "2026-07-06T04:50:00Z",
   "actualizado_por": "Sesión fundadora (pre-ciclo 1)",
   "metrica_norte": {
     "moneda": "USD",
@@ -108,8 +108,8 @@
     },
     {
       "id": 9,
-      "titulo": "Aprobar el 2º ciclo diario del agente (22:00 UTC) cuando aparezca el diálogo",
-      "desbloquea": "el doble de trabajo compuesto por día",
+      "titulo": "Aprobar los diálogos de rutinas: horarios fijados por el dueño en 11:30 y 21:00 Chile (15:30 y 01:00 UTC); ambas operaciones esperan aprobación (o editarlas a mano en claude.ai/code → Routines)",
+      "desbloquea": "ciclos en los horarios elegidos + doble trabajo diario",
       "estado": "pendiente"
     }
   ],
@@ -118,7 +118,8 @@
     "Usar, buscar, instalar o crear herramientas que lo hagan más capaz cada día",
     "Cazar oportunidades: construir apps nuevas ante opciones validadas de ingresos",
     "Foco principal: generación de dinero",
-    "Rentabilidad positiva SIEMPRE (costos ≤ ingresos)"
+    "Rentabilidad positiva SIEMPRE (costos ≤ ingresos)",
+    "Pregunta obligatoria en cada sesión: \"¿Fue esto lo mejor para generar utilidades? ¿Cómo aumentarlas más?\" — con mejoras aplicadas de inmediato"
   ],
   "ingresos_diarios": [],
   "historial_ciclos": [
@@ -151,6 +152,10 @@
     {
       "fecha": "2026-07-06",
       "mejora": "Etapa 0 afiliación + regla 'un activo de tráfico por ciclo' + regla de valor esperado"
+    },
+    {
+      "fecha": "2026-07-06",
+      "mejora": "Pregunta obligatoria de utilidades en cada sesión + horarios objetivo 11:30/21:00 Chile"
     }
   ],
   "herramientas": [
