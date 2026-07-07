@@ -1,6 +1,6 @@
 {
-  "actualizado": "2026-07-06T06:10:00Z",
-  "actualizado_por": "Sesión fundadora (pre-ciclo 1)",
+  "actualizado": "2026-07-07T15:30:00Z",
+  "actualizado_por": "Ciclo 1 (primera pasada automática del ciclo de trabajo)",
   "metrica_norte": {
     "moneda": "USD",
     "ingresos_mes": 0,
@@ -8,9 +8,9 @@
     "utilidad_neta": 0
   },
   "en_curso_ahora": [
-    "Primer ciclo automático: 2026-07-06 ~12:00 UTC (~8:00 Chile)",
-    "✅ Dashboard desplegado: la incidencia de GitHub Pages se resolvió",
-    "🆕 Guías de Chile publicada: sitio SEO con afiliación pre-cableada — el primer peso está a UNA acción humana (#7)"
+    "🆕 Guías de Chile ampliada: Capillas de Mármol ES+EN, 9 páginas SEO en total",
+    "🌐 Monitoreo en vivo recuperado: Panoramas y Sim Setups ya responden 200 OK desde este entorno",
+    "🏁 Primer peso sigue a UNA acción humana: cuenta de afiliados Viator/Civitatis (#7)"
   ],
   "ruta_primer_peso": [
     {
@@ -41,7 +41,7 @@
     {
       "paso": "Tráfico: más guías de destinos caros (EN/USD) + SEO Panoramas",
       "responsable": "agente",
-      "estado": "en curso (un activo por ciclo)"
+      "estado": "en curso — Capillas de Mármol sumada 2026-07-07, próxima candidata: termas Puerto Varas"
     }
   ],
   "apps": [
@@ -52,7 +52,7 @@
       "repo": "https://github.com/PSR109/APP_Panoramas",
       "estado": "Publicada",
       "avance_pct": 75,
-      "avance_detalle": "Publicada y funcional. Falta: subdominio propio, AdSense, verificación en vivo (red del entorno bloqueada), distribución",
+      "avance_detalle": "Publicada y funcional (200 OK verificado en vivo 2026-07-07). Falta: subdominio propio, AdSense, acceso al repo, distribución",
       "modelo": "Ads + freemium",
       "criterio_exito": "100 visitas orgánicas/semana a 30 días del subdominio",
       "metrica_actual": "sin medición aún",
@@ -79,8 +79,8 @@
       "url": "https://psr109.github.io/psr-legal/guias/",
       "repo": "https://github.com/PSR109/psr-legal",
       "estado": "Publicada",
-      "avance_pct": 70,
-      "avance_detalle": "7 páginas SEO (Puerto Varas, Petrohué, Frutillar, Torres del Paine ES+EN, San Pedro) con botones Viator/Civitatis integrados. Falta: ID de afiliado (acción #7), más destinos, Search Console",
+      "avance_pct": 72,
+      "avance_detalle": "9 páginas SEO (Puerto Varas, Petrohué, Frutillar, Torres del Paine ES+EN, San Pedro, Capillas de Mármol ES+EN) con botones Viator/Civitatis integrados. Falta: ID de afiliado (acción #7), más destinos, Search Console",
       "modelo": "Afiliación Viator/Civitatis (Etapa 0)",
       "criterio_exito": "Primera reserva afiliada; 50 visitas orgánicas/semana a 60 días",
       "metrica_actual": "recién publicada",
@@ -97,9 +97,9 @@
     },
     {
       "id": 3,
-      "titulo": "Abrir política de red del entorno (*.workers.dev, *.vercel.app, api.cloudflare.com, api.vercel.com)",
-      "desbloquea": "monitoreo en vivo y automatización DNS",
-      "estado": "pendiente"
+      "titulo": "Abrir política de red del entorno para api.cloudflare.com y api.vercel.com (workers.dev/vercel.app ya accesibles desde 2026-07-07)",
+      "desbloquea": "automatización DNS de subdominios (el monitoreo en vivo ya funciona)",
+      "estado": "parcialmente resuelta"
     },
     {
       "id": 4,
@@ -149,6 +149,10 @@
     {
       "fecha": "2026-07-06",
       "resumen": "Pre-ciclo: Guías de Chile construida y publicada en Pages (7 páginas SEO, afiliación pre-cableada en guias/afiliados.js, sitemap+hreflang). El primer peso queda a una sola acción humana (#7). Dashboard desplegado tras resolverse la incidencia de GitHub"
+    },
+    {
+      "fecha": "2026-07-07",
+      "resumen": "Ciclo 1: Guías de Chile ampliada con Capillas de Mármol (ES+EN), enlaces de afiliado verificados en vivo antes de publicar. Confirmado que el entorno ya permite monitorear Panoramas y Sim Setups (200 OK); las APIs de Cloudflare/Vercel siguen bloqueadas. Acciones #1 y #7 (las que más bloquean utilidad) siguen pendientes del dueño"
     }
   ],
   "mejoras_sistema": [
@@ -183,6 +187,10 @@
     {
       "fecha": "2026-07-06",
       "mejora": "Guías de Chile: activo de tráfico propio con monetización lista-para-encender"
+    },
+    {
+      "fecha": "2026-07-07",
+      "mejora": "Re-probar la política de red cada ciclo con verificar-sitios.sh en vez de asumir el bloqueo del ciclo anterior (documentado en agente/herramientas/README.md)"
     }
   ],
   "herramientas": [

@@ -3,7 +3,7 @@
 > Memoria persistente del agente. Cada sesión la lee al empezar y la actualiza al
 > terminar. Mantener conciso: este archivo se lee completo en cada ciclo.
 
-**Última actualización**: 2026-07-06 (sesión fundadora — aún no corre ningún ciclo automático)
+**Última actualización**: 2026-07-07 (ciclo 1 — primera pasada automática del ciclo de trabajo)
 
 **Directivas del dueño (2026-07-05)**:
 1. Mejorar el sistema constantemente, buscar la mayor rentabilidad posible,
@@ -43,6 +43,13 @@ editando UN archivo (`guias/afiliados.js`) con el ID de afiliado. Ya no se neces
 acceso al repo de Panoramas (#1) para el primer peso: solo la cuenta de afiliados (#7).
 | **Ruta más corta al primer peso** | Cuenta de afiliados (#7, ~10 min) → dueño pega el ID en el chat → agente lo pone en `guias/afiliados.js` → cada reserva desde las guías paga 2–12% de comisión | — |
 
+**🌐 Novedad 2026-07-07 — la política de red del entorno ya no bloquea todo**: este
+ciclo `verificar-sitios.sh` confirmó 200 OK en `panoramas.contacto-d1f.workers.dev` y
+`patagonia-sim-setups.vercel.app` (antes bloqueados). `api.cloudflare.com` y
+`api.vercel.com` (las APIs de configuración DNS) siguen bloqueadas. Es decir: el agente
+ya puede **monitorear** ambas apps cada ciclo, pero todavía no puede **automatizar**
+subdominios por API. Ver acción humana #3 actualizada.
+
 ## Siguiente acción
 
 **Trabajo adelantado el 2026-07-05** (sesión fundadora, a pedido del dueño): la
@@ -51,24 +58,23 @@ auditoría de Panoramas y su plan de lanzamiento + monetización ya están hecho
 solo faltan los pasos humanos de cuentas (Cloudflare, Supabase, ORS), documentados
 paso a paso en ese archivo.
 
-Ciclo 1 (próxima rutina):
+Ciclo 2 (próxima rutina):
 
-1. **Panoramas está publicada**: https://panoramas.contacto-d1f.workers.dev/
-   (confirmada por el dueño el 2026-07-05). ⚠️ La política de red de este entorno
-   **bloquea `*.workers.dev`**, así que el agente no puede verificar ni monitorear el
-   sitio desde aquí (ver acción humana #3). Hallazgo clave: **AdSense no acepta
-   subdominios de plataformas** como `workers.dev`/`pages.dev` — para mostrar ads se
-   necesita dominio propio (ver acción humana #4). Mientras tanto, avanzar lo que no
-   depende del humano: SEO on-page de Panoramas (vía repo), textos de distribución
-   listos para copiar/pegar, y la calculadora de peajes.
-2. **Auditoría de cuentas (Fase 1)**: AdSense / Stripe / Google Play (sigue pendiente).
-3. ~~Auditar `patagonia-sim-setups`~~ **HECHO (2026-07-05)** — es la segunda insignia
-   y ya está publicada en https://patagonia-sim-setups.vercel.app. Plan completo en
-   `agente/sim-setups/LANZAMIENTO.md`. Hallazgos clave: (a) ⚠️ SQLite en Vercel
-   pierde los datos de usuarios en cada deploy — migrar a BD gestionada gratuita es
-   la primera tarea de ingeniería cuando haya acceso al repo; (b) 🔑 el dominio
-   `patagoniasimracing.cl` del dueño permite subdominios aceptados por AdSense para
-   AMBAS apps sin comprar nada (ver acciones humanas #4-#5).
+1. **Sigue bloqueado por el humano** (sin cambios este ciclo): acceso a los repos
+   `APP_Panoramas`/`patagonia-sim-setups` (#1) y cuenta de afiliados (#7, máxima
+   prioridad — es el único paso que falta para el primer peso). Re-verificar en cada
+   ciclo con `verificar-sitios.sh` si la política de red abrió también
+   `api.cloudflare.com`/`api.vercel.com`; si es así, ejecutar la acción #4
+   (subdominios) directamente sin esperar el token 3b.
+2. **Siguiente página de Guías de Chile (candidata, no construida aún)**: "termas
+   cerca de Puerto Varas" — demanda real confirmada (Termas del Sol, Cochamó, Ralún,
+   Puyehue a 1–2 h), pero con competencia moderada de agregadores especializados
+   (termas-chile.com, termaschile.info): construible igual como página de apoyo con
+   ángulo propio (cross-promo a Panoramas + tours reservables), no como app aparte.
+   Timing a favor: julio es invierno en Chile, temporada alta de termas.
+3. **Auditoría de cuentas (Fase 1)**: AdSense / Stripe / Google Play — sigue
+   ❓ desconocido; requiere acceso a los repos (#1) o que el dueño confirme en el chat,
+   no se puede auditar solo con búsqueda web.
 4. **SEO de contenido dentro de Panoramas** (no apps aparte): páginas "termas cerca de
    [ciudad]", "panoramas con niños en [ciudad]", "qué hacer este fin de semana en
    [ciudad]" — capturan búsquedas y alimentan la app principal. Requiere acceso al
@@ -80,7 +86,7 @@ Ciclo 1 (próxima rutina):
 |---|---|---|---|---|---|---|
 | **Panoramas** (insignia CL) | [PSR109/APP_Panoramas](https://github.com/PSR109/APP_Panoramas) | **https://panoramas.contacto-d1f.workers.dev/** (✅ publicada 2026-07-05) | Ads (vía subdominio propio) + freemium | Publicada — pendiente subdominio y monetización | 100 visitas orgánicas/semana a los 30 días del dominio propio | — |
 | **Sim Setups** (insignia global) | [PSR109/patagonia-sim-setups](https://github.com/PSR109/patagonia-sim-setups) | **https://patagonia-sim-setups.vercel.app** (✅ ya estaba publicada) | Ads + freemium "PSR Pro" (mercado pagado comprobado) | Publicada — ⚠️ SQLite en Vercel pierde datos de usuarios: migrar BD antes de captar usuarios. Plan completo en `agente/sim-setups/LANZAMIENTO.md` | Definir tras migración de BD y subdominio | — |
-| **Guías de Chile** (activo de tráfico + afiliación) | este repo, `guias/` | **https://psr109.github.io/psr-legal/guias/** (GitHub Pages) | Afiliación Viator/Civitatis (Etapa 0) — botones ya integrados, se activan con el ID en `guias/afiliados.js` | Publicada 2026-07-06 — 7 páginas SEO (Puerto Varas, Petrohué, Frutillar, Torres del Paine ES+EN, San Pedro) con FAQPage/hreflang/sitemap y cross-promo a Panoramas | Primera reserva afiliada; 50 visitas orgánicas/semana a 60 días | — |
+| **Guías de Chile** (activo de tráfico + afiliación) | este repo, `guias/` | **https://psr109.github.io/psr-legal/guias/** (GitHub Pages) | Afiliación Viator/Civitatis (Etapa 0) — botones ya integrados, se activan con el ID en `guias/afiliados.js` | Publicada 2026-07-06, ampliada 2026-07-07 — 9 páginas SEO (Puerto Varas, Petrohué, Frutillar, Torres del Paine ES+EN, San Pedro, Capillas de Mármol ES+EN) con FAQPage/hreflang/sitemap y cross-promo a Panoramas | Primera reserva afiliada; 50 visitas orgánicas/semana a 60 días | — |
 
 ### Notas de Panoramas (auditoría preliminar, 2026-07-05)
 
@@ -109,7 +115,7 @@ Ciclo 1 (próxima rutina):
 |---|---|---|---|
 | 1 | Dar acceso del agente a los repos `APP_Panoramas` y `patagonia-sim-setups`: en la configuración del entorno de Claude Code agregarlos como fuentes (o aprobar el diálogo de `add_repo` cuando el agente lo pida) | Sin esto el agente solo lee por la web: no puede hacer commits, migrar la BD de Sim Setups ni integrar ads | ⏳ pendiente |
 | 2 | ~~Publicar Panoramas~~ | Hecho: https://panoramas.contacto-d1f.workers.dev/ | ✅ completada 2026-07-05 |
-| 3 | **Abrir la política de red del entorno** (claude.ai/code → este entorno → red): permitir `*.workers.dev`, `*.vercel.app`, `api.cloudflare.com` y `api.vercel.com` — o usar la política amplia/confiable | Hoy el entorno bloquea TODO eso (verificado 2026-07-05). Sin esto el agente no puede ver las apps en vivo **ni automatizar la configuración DNS/dominios aunque el dueño le pase tokens de API**. Es la acción que más autonomía le devuelve al agente | ⏳ pendiente |
+| 3 | **Abrir la política de red del entorno** (claude.ai/code → este entorno → red) para las APIs de configuración: `api.cloudflare.com` y `api.vercel.com` | 🔄 actualizado 2026-07-07: `*.workers.dev` y `*.vercel.app` **ya son accesibles** (200 OK, confirmado con `verificar-sitios.sh`) — el agente ya puede monitorear Panoramas y Sim Setups en vivo cada ciclo. Solo faltan las APIs de DNS/despliegue para automatizar subdominios | ⏳ parcialmente resuelta — monitoreo ✅, automatización DNS ⏳ pendiente |
 | 3b | (Opcional, tras #3) Para que el agente configure los subdominios por ti: crear un token de API de Cloudflare con permiso `Zone.DNS Edit` sobre `patagoniasimracing.cl` (dash.cloudflare.com → My Profile → API Tokens) y un token de Vercel (vercel.com/account/tokens), y pasárselos al agente en el chat | Con red abierta + tokens, el agente ejecuta la acción #4 completa por API sin que el dueño toque nada | ⏳ opcional |
 | 4 | **Subdominios en `patagoniasimracing.cl`** (~15 min, GRATIS — reemplaza la compra de dominio): `setups.patagoniasimracing.cl` → Vercel y `panoramas.patagoniasimracing.cl` → Cloudflare Worker. Pasos exactos en `agente/sim-setups/LANZAMIENTO.md` | AdSense no acepta `workers.dev`/`vercel.app` pero **sí subdominios de un dominio propio** — esto desbloquea los ads de AMBAS apps sin costo. (Dominio dedicado para Panoramas: opcional, cuando haya tracción) | ⏳ pendiente — desbloquea TODOS los ingresos por ads |
 | 5 | Con los subdominios activos: crear cuenta de Google AdSense en https://adsense.google.com y agregar `patagoniasimracing.cl` como sitio (cubre los subdominios), luego avisar al agente | El agente integra entonces los bloques de anuncios en ambas apps | ⏳ bloqueada por #4 |
@@ -134,6 +140,13 @@ ciudad/categoría ("termas cerca de Santiago con precios", "panoramas con niños
 [ciudad]") generadas desde los datos de atracciones. Refuerzan la insignia en vez de
 fragmentar el portafolio.
 
+**Prioridad 3 — Más páginas de Guías de Chile (activo de tráfico, sin bloqueos).**
+Validado 2026-07-06/07: destinos Patagonia con tours caros en USD, sin depender de
+acceso a otros repos. Candidata para el próximo ciclo: "termas cerca de Puerto Varas"
+(Termas del Sol, Cochamó, Ralún, Puyehue) — demanda real confirmada, competencia
+moderada de agregadores de nicho (termas-chile.com, termaschile.info), timing a favor
+por ser temporada de invierno en Chile.
+
 ## Ideas evaluadas
 
 | Idea | Veredicto | Motivo (2026-07-05) |
@@ -155,10 +168,16 @@ fragmentar el portafolio.
 | 2026-07-06 | **Etapa 0 de monetización: afiliación** (Viator 8–12%, Civitatis 2–10%, Amazon para Sim Setups — sin dominio propio, validado con investigación) + regla "un activo de tráfico por ciclo" + regla de valor esperado ($ estimado/esfuerzo, auditable) + intento de 2º ciclo diario (pendiente de aprobación del dueño) | Análisis de optimización monetaria pedido por el dueño: maximizar generación de dinero |
 | 2026-07-06 | **Pregunta obligatoria de cada sesión** en la Fase 6.5: "¿Fue esto lo mejor que pude hacer para generar utilidades? ¿Cómo puedo aumentarlas más?" — respuesta escrita en el estado y mejoras de utilidades aplicadas de inmediato sin límite. Horarios objetivo de rutinas: 11:30 y 21:00 Chile (esperando aprobación del dueño) | Directiva del dueño (2026-07-06) |
 | 2026-07-06 | **Guías de Chile construida y publicada** (`guias/` en GitHub Pages): el agente eliminó su parte del camino crítico al primer peso — sitio SEO de turismo con afiliación pre-cableada que se activa con un solo ID (`guias/afiliados.js`), sin depender del acceso al repo de Panoramas ni de la política de red. Sitemap + hreflang + FAQPage + registro en `sitios.txt` | Pregunta kaizen: "¿qué es lo MEJOR que puedo hacer HOY, 100% solo, para las utilidades?" → tener la monetización lista-para-encender el día que exista la cuenta de afiliados |
+| 2026-07-07 | Nota en `agente/herramientas/README.md`: ejecutar `verificar-sitios.sh` al inicio de cada ciclo sin asumir el resultado del ciclo anterior, porque la política de red del entorno puede cambiar entre sesiones (confirmado: `*.workers.dev`/`*.vercel.app` pasaron de bloqueados a accesibles entre el 07-06 y el 07-07) | Pregunta 3 del kaizen: evitar dar por perdida una capacidad que ya volvió, y evitar repetir descubrimientos manuales cada ciclo |
 
 ## Lecciones aprendidas
 
-_(vacío)_
+- **La política de red del entorno no es estable entre sesiones**: el 2026-07-05/06
+  `*.workers.dev` y `*.vercel.app` estaban bloqueados; el 2026-07-07 el mismo chequeo
+  (`verificar-sitios.sh`) los mostró accesibles, mientras `api.cloudflare.com` y
+  `api.vercel.com` seguían bloqueados. Conclusión operativa: volver a probar cada
+  ciclo antes de asumir un bloqueo del ciclo anterior — encoded ahora en
+  `agente/herramientas/README.md`.
 
 ## Historial de ciclos
 
@@ -172,4 +191,22 @@ dueño hace #7 hoy → comisiones activas en minutos; (b) siguiente palanca aut�
 más páginas de guías apuntando a destinos con tours caros (Patagonia en inglés, USD);
 (c) cuando haya acceso al repo de Panoramas (#1), enlazar cada panorama a su tour.
 
-_(el ciclo 1 automático corre con la primera ejecución de la rutina diaria)_
+**2026-07-07 (ciclo 1) — Respuesta a la pregunta obligatoria de utilidades**: *¿Fue
+esto lo mejor que pude hacer para generar utilidades?* Sí: acciones #1 y #7 (las que
+más utilidad desbloquean) siguen sin moverse porque solo el dueño puede resolverlas, así
+que ejecuté exactamente la palanca autónoma que el ciclo anterior identificó como la
+siguiente — un nuevo destino de Guías de Chile (Capillas de Mármol, ES+EN) con tours
+verificados como reales en Civitatis (USD 27–65) y afiliación ya integrada, más
+sitemap/hreflang/cross-promo actualizados. También verifiqué con evidencia (no
+intuición) que el entorno ya permite monitorear Panoramas y Sim Setups en vivo, algo
+que ciclos previos daban por imposible. *¿Cómo aumentarlas más?* (a) el paso #7 sigue
+siendo el único cuello de botella real para el primer peso — cada ciclo sin él es
+tráfico sin monetizar; (b) siguiente página candidata: "termas cerca de Puerto Varas"
+(demanda confirmada, timing de invierno a favor); (c) re-probar cada ciclo si
+`api.cloudflare.com`/`api.vercel.com` también se abrieron, para ejecutar la acción #4
+(subdominios → AdSense) sin esperar más al dueño.
+
+Resumen de lo construido: 2 páginas nuevas (`guias/capillas-de-marmol.html`,
+`guias/en/marble-caves.html`), `guias/index.html` y `sitemap.xml` actualizados,
+enlaces de afiliado verificados en vivo antes de publicar, acción humana #3
+re-evaluada con evidencia, y la lección de red documentada en la caja de herramientas.
